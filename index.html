@@ -153,5 +153,43 @@
         </form>
         <div id="result"></div>
     </div>
+    <script>
+        function calculateScore() {
+            const form = document.forms['gpaqForm'];
+            function getNumber(name) {
+                return form[name] && form[name].value ? parseInt(form[name].value) : 0;
+            }
+            
+            const APim = (getNumber('q2') * ((getNumber('q3_hours') * 60) + getNumber('q3_minutes'))) + 
+                         (getNumber('q11') * ((getNumber('q12_hours') * 60) + getNumber('q12_minutes')));
+            const APiS = APim * 8;
+            const APij = getNumber('q2') + getNumber('q11');
+
+            const APmm = (getNumber('q5') * ((getNumber('q6_hours') * 60) + getNumber('q6_minutes'))) + 
+                         (getNumber('q8') * ((getNumber('q9_hours') * 60) + getNumber('q9_minutes'))) + 
+                         (getNumber('q14') * ((getNumber('q15_hours') * 60) + getNumber('q15_minutes')));
+            const APmS = APmm * 4;
+            const APmj = getNumber('q5') + getNumber('q8') + getNumber('q14');
+
+            const APtS = APiS + APmS;
+            const APtj = APij + APmj;
+            
+            const S = (getNumber('q16_hours')) + (getNumber('q16_minutes') / 60);
+
+            let activityStatus;
+            if ((APij >= 3 && APtS >= 1500) || (APtj >= 7 && APtS >= 3000)) {
+                activityStatus = `Très actif (${APtS} MET-min/semaine)`;
+            } else if ((APij >= 3 && APim >= 60) || (APmj >= 5 && APmm >= 150) || (APtj >= 5 && APtS >= 600)) {
+                activityStatus = `Moyennement actif (${APtS} MET-min/semaine)`;
+            } else {
+                activityStatus = `Insuffisamment actif (${APtS} MET-min/semaine)`;
+            }
+            
+            const sedentaryStatus = S >= 7 ? `Sédentaire (${S.toFixed(1)}h)` : `Non sédentaire (${S.toFixed(1)}h)`;
+
+            document.getElementById('result').innerText = `Statut d'activité : ${activityStatus}
+Statut de sédentarité : ${sedentaryStatus}`;
+        }
+    </script>
 </body>
 </html>
