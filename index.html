@@ -26,6 +26,37 @@
             text-align: center;
             color: #333;
         }
+        @media print {
+    body {
+        font-size: 12px; /* Réduire la taille du texte */
+    }
+    .container {
+        max-width: 100%; /* Élargir le contenu pour optimiser l'espace */
+        width: auto;
+        padding: 10px;
+    }
+    .question {
+        margin-bottom: 5px; /* Réduire l'espace entre les questions */
+    }
+    label, input {
+        font-size: 12px; /* Réduire la taille des champs */
+    }
+    button {
+        display: none; /* Cacher les boutons "Soumettre" et "Imprimer" */
+    }
+}
+@media print {
+    .container {
+        page-break-inside: avoid; /* Évite de couper des blocs */
+    }
+    .question {
+        page-break-inside: avoid; /* Garde les questions ensemble */
+    }
+    h1, h2 {
+        page-break-after: avoid; /* Évite que les titres soient isolés sur une autre page */
+    }
+}
+
         .intro-text {
             text-align: center;
             font-size: 14px;
