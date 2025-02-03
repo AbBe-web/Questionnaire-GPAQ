@@ -28,32 +28,37 @@
         }
         @media print {
     body {
-        font-size: 12px; /* Réduire la taille du texte */
+        font-size: 12px; /* Réduction de la taille du texte */
+        margin: 0;
+        padding: 0;
     }
     .container {
-        max-width: 100%; /* Élargir le contenu pour optimiser l'espace */
+        max-width: 100%;
         width: auto;
         padding: 10px;
     }
     .question {
-        margin-bottom: 5px; /* Réduire l'espace entre les questions */
+        margin-bottom: 5px; /* Réduction des espaces entre les questions */
+        page-break-inside: avoid; /* Évite de couper les questions en deux */
     }
     label, input {
-        font-size: 12px; /* Réduire la taille des champs */
+        font-size: 12px; /* Réduction de la taille des labels et des champs */
     }
     button {
-        display: none; /* Cacher les boutons "Soumettre" et "Imprimer" */
-    }
-}
-@media print {
-    .container {
-        page-break-inside: avoid; /* Évite de couper des blocs */
-    }
-    .question {
-        page-break-inside: avoid; /* Garde les questions ensemble */
+        display: none; /* Cache les boutons pour ne pas les imprimer */
     }
     h1, h2 {
-        page-break-after: avoid; /* Évite que les titres soient isolés sur une autre page */
+        page-break-after: avoid; /* Évite que les titres soient coupés */
+    }
+    .input-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        page-break-inside: avoid;
+    }
+    #result {
+        page-break-before: avoid;
+        page-break-after: auto;
     }
 }
 
