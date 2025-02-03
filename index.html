@@ -151,6 +151,7 @@
                 <input type="number" name="q16_minutes" min="0" max="59" placeholder="Minutes">
             </div>
             <button type="button" onclick="calculateScore()">Soumettre</button>
+            <button type="button" onclick="imprimerQuestionnaire()">Imprimer</button>
         </form>
         <div id="result"></div>
     </div>
@@ -211,5 +212,10 @@ Statut de sédentarité : ${sedentaryStatus}`;
             });
         });
     </script>
+    <script>
+    function imprimerQuestionnaire() {
+        window.print();
+    }
+</script>
 </body>
 </html>
