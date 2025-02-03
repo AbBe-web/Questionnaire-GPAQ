@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire GPAQ</title>
     <title>Questionnaire GPAQ Je vais maintenant vous poser quelques questions sur le temps que vous consacrez à différents types d’activité physique lors d'une semaine typique. Veuillez répondre à ces questions même si vous ne vous considérez pas comme quelqu’un d’actif.</title>
     <style>
         body {
@@ -81,7 +82,7 @@
                 <input type="number" name="q3_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q3_minutes" min="0" max="59" placeholder="Minutes">
             </div>
-            
+
             <h2>Activité modérée au travail</h2>
             <div class="question">
                 <p>4. Votre travail implique-t-il des activités physiques modérées ?</p>
@@ -97,7 +98,7 @@
                 <input type="number" name="q6_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q6_minutes" min="0" max="59" placeholder="Minutes">
             </div>
-            
+
             <h2>Déplacements</h2>
             <div class="question">
                 <p>7. Effectuez-vous des trajets d’au moins 10 minutes à pied ou à vélo ?</p>
@@ -113,7 +114,7 @@
                 <input type="number" name="q9_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q9_minutes" min="0" max="59" placeholder="Minutes">
             </div>
-            
+
             <h2>Activité de loisirs</h2>
             <div class="question">
                 <p>10. Pratiquez-vous des sports ou du fitness de forte intensité ?</p>
@@ -159,7 +160,7 @@
             function getNumber(name) {
                 return form[name] && form[name].value ? parseInt(form[name].value) : 0;
             }
-            
+
             const APim = (getNumber('q2') * ((getNumber('q3_hours') * 60) + getNumber('q3_minutes'))) + 
                          (getNumber('q11') * ((getNumber('q12_hours') * 60) + getNumber('q12_minutes')));
             const APiS = APim * 8;
@@ -173,22 +174,22 @@
 
             const APtS = APiS + APmS;
             const APtj = APij + APmj;
-            
+
             const S = (getNumber('q16_hours')) + (getNumber('q16_minutes') / 60);
 
             let activityStatus;
             if ((APij >= 3 && APtS >= 1500) || (APtj >= 7 && APtS >= 3000)) {
-                activityStatus = Très actif (${APtS} MET-min/semaine);
+                activityStatus = `Très actif (${APtS} MET-min/semaine)`;
             } else if ((APij >= 3 && APim >= 60) || (APmj >= 5 && APmm >= 150) || (APtj >= 5 && APtS >= 600)) {
-                activityStatus = Moyennement actif (${APtS} MET-min/semaine);
+                activityStatus = `Moyennement actif (${APtS} MET-min/semaine)`;
             } else {
-                activityStatus = Insuffisamment actif (${APtS} MET-min/semaine);
+                activityStatus = `Insuffisamment actif (${APtS} MET-min/semaine)`;
             }
-            
-            const sedentaryStatus = S >= 7 ? Sédentaire (${S.toFixed(1)}h) : Non sédentaire (${S.toFixed(1)}h);
 
-            document.getElementById('result').innerText = Statut d'activité : ${activityStatus}
-Statut de sédentarité : ${sedentaryStatus};
+            const sedentaryStatus = S >= 7 ? `Sédentaire (${S.toFixed(1)}h)` : `Non sédentaire (${S.toFixed(1)}h)`;
+
+            document.getElementById('result').innerText = `Statut d'activité : ${activityStatus}
+Statut de sédentarité : ${sedentaryStatus}`;
         }
     </script>
     <script>
