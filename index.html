@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questionnaire GPAQ Je vais maintenant vous poser quelques questions sur le temps que vous consacrez à différents types d’activité physique lors d'une semaine typique. Veuillez répondre à ces questions même si vous ne vous considérez pas comme quelqu’un d’actif.</title>
+    <title>Questionnaire GPAQ</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,15 +27,18 @@
             color: #333;
         }
         .question {
-            margin-bottom: 20px;
+            margin-bottom: 10px; /* Reduced spacing */
         }
         label {
-            display: block;
-            padding: 5px;
+            display: flex;
+            align-items: center;
             cursor: pointer;
         }
         input[type="radio"], input[type="number"] {
-            margin-right: 8px;
+            margin-right: 5px;
+        }
+        input[type="number"] {
+            width: auto;
         }
         button {
             background-color: #007BFF;
@@ -46,6 +49,7 @@
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
+            margin-top: 20px;
         }
         button:hover {
             background-color: #0056b3;
@@ -81,7 +85,6 @@
                 <input type="number" name="q3_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q3_minutes" min="0" max="59" placeholder="Minutes">
             </div>
-            
             <h2>Activité modérée au travail</h2>
             <div class="question">
                 <p>4. Votre travail implique-t-il des activités physiques modérées ?</p>
@@ -97,7 +100,6 @@
                 <input type="number" name="q6_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q6_minutes" min="0" max="59" placeholder="Minutes">
             </div>
-            
             <h2>Déplacements</h2>
             <div class="question">
                 <p>7. Effectuez-vous des trajets d’au moins 10 minutes à pied ou à vélo ?</p>
@@ -113,7 +115,6 @@
                 <input type="number" name="q9_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q9_minutes" min="0" max="59" placeholder="Minutes">
             </div>
-            
             <h2>Activité de loisirs</h2>
             <div class="question">
                 <p>10. Pratiquez-vous des sports ou du fitness de forte intensité ?</p>
@@ -179,7 +180,7 @@
             let activityStatus;
             if ((APij >= 3 && APtS >= 1500) || (APtj >= 7 && APtS >= 3000)) {
                 activityStatus = `Très actif (${APtS} MET-min/semaine)`;
-            } else if ((APij >= 3 && APim >= 60) || (APmj >= 5 && APmm >= 150) || (APtj >= 5 && APtS >= 600)) {
+            } else if ((APij >= 3 && APim >= 60) || (APmj >= 5 and APmm >= 150) || (APtj >= 5 and APtS >= 600)) {
                 activityStatus = `Moyennement actif (${APtS} MET-min/semaine)`;
             } else {
                 activityStatus = `Insuffisamment actif (${APtS} MET-min/semaine)`;
@@ -187,8 +188,7 @@
             
             const sedentaryStatus = S >= 7 ? `Sédentaire (${S.toFixed(1)}h)` : `Non sédentaire (${S.toFixed(1)}h)`;
 
-            document.getElementById('result').innerText = `Statut d'activité : ${activityStatus}
-Statut de sédentarité : ${sedentaryStatus}`;
+            document.getElementById('result').innerText = `Statut d'activité : ${activityStatus}\nStatut de sédentarité : ${sedentaryStatus}`;
         }
     </script>
     <script>
@@ -212,3 +212,4 @@ Statut de sédentarité : ${sedentaryStatus}`;
     </script>
 </body>
 </html>
+
