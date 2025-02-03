@@ -61,7 +61,24 @@
             color: #007BFF;
             width: 100%;
         }
-    </style>
+    .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Espace entre les champs */
+}
+
+.input-group label {
+    width: 80px; /* Largeur fixe pour aligner les labels */
+    font-weight: bold; /* Optionnel : mettre en gras */
+}
+
+.input-group input {
+    flex: 1; /* Permet aux champs de s'adapter à la largeur */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+</style>
 </head>
 <body>
     <div class="container">
@@ -150,7 +167,7 @@
                 <input type="number" name="q16_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q16_minutes" min="0" max="59" placeholder="Minutes">
             </div>
-            <h2>Informations personnelles</h2>
+            <<h2>Informations personnelles</h2>
 <div class="question">
     <label for="nom">Nom :</label>
     <input type="text" id="nom" name="nom" placeholder="Entrez votre nom">
@@ -158,6 +175,7 @@
 <div class="question">
     <label for="prenom">Prénom :</label>
     <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom">
+</div>
 </div>
             <button type="button" onclick="calculateScore()">Soumettre</button>
             <button type="button" onclick="imprimerQuestionnaire()" style="margin-top: 10px;">Imprimer</button>
