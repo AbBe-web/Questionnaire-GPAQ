@@ -22,6 +22,26 @@
             max-width: 600px;
             width: 100%;
         }
+        <style>
+        @media (max-width: 600px) {
+        .input-group input, .input-group label {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .input-group {
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        input[type="number"] {
+            min-width: 120px;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+    }
+</style>
+
         @media (max-width: 600px) {
     .input-group input {
         font-size: 16px;
@@ -52,17 +72,17 @@
         padding: 10px;
     }
     .question {
-        margin-bottom: 5px; /* Réduction des espaces entre les questions */
-        page-break-inside: avoid; /* Évite de couper les questions en deux */
+        margin-bottom: 5px;
+        page-break-inside: avoid;
     }
     label, input {
-        font-size: 12px; /* Réduction de la taille des labels et des champs */
+        font-size: 12px;
     }
     button {
-        display: none; /* Cache les boutons pour ne pas les imprimer */
+        display: none;
     }
     h1, h2 {
-        page-break-after: avoid; /* Évite que les titres soient coupés */
+        page-break-after: avoid;
     }
     .input-group {
         display: flex;
