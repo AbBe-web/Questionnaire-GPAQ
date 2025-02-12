@@ -277,7 +277,7 @@
                 activityStatus = `Insuffisamment actif (${APtS} MET-min/semaine)`;
             }
 
-            const sedentaryStatus = S >= 7 ? `Sédentaire (${S.toFixed(1)}h)` : `Non sédentaire (${S.toFixed(1)}h)`;
+            const sedentaryStatus = S >= 8 ? `Sédentaire (${S.toFixed(1)}h)` : `Non sédentaire (${S.toFixed(1)}h)`;
 
             document.getElementById('result').innerText = `Statut d'activité : ${activityStatus}
 Statut de sédentarité : ${sedentaryStatus}`;
