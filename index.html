@@ -353,7 +353,7 @@ Statut de sédentarité : ${sedentaryStatus}`;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            showNextQuestion();
+            questions[currentQuestionIndex].style.display = 'block'; // Show the first question
             const inputs = document.querySelectorAll('input[type="radio"], input[type="number"]');
             inputs.forEach(input => {
                 input.addEventListener('change', showNextQuestion);
