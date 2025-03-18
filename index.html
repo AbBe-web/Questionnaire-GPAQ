@@ -22,57 +22,60 @@
             max-width: 600px;
             width: 100%;
         }
-        @media (max-width: 600px) {
-            .input-group input {
-                font-size: 16px;
-                padding: 12px;
-            }
-            label {
-                font-size: 14px;
-            }
-            .question {
-                margin-bottom: 25px;
-            }
-        }
+              @media (max-width: 600px) {
+    .input-group input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    .question {
+        margin-bottom: 25px;
+    }
+}
         h1, h2 {
             text-align: center;
             color: #333;
         }
         @media print {
-            body {
-                font-size: 12px;
-                margin: 0;
-                padding: 0;
-            }
-            .container {
-                max-width: 100%;
-                width: auto;
-                padding: 10px;
-            }
-            .question {
-                margin-bottom: 5px;
-                page-break-inside: avoid;
-            }
-            label, input {
-                font-size: 12px;
-            }
-            button {
-                display: none;
-            }
-            h1, h2 {
-                page-break-after: avoid;
-            }
-            .input-group {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                page-break-inside: avoid;
-            }
-            #result {
-                page-break-before: avoid;
-                page-break-after: auto;
-            }
-        }
+    body {
+        font-size: 12px;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 100%;
+        width: auto;
+        padding: 10px;
+    }
+    .question {
+        margin-bottom: 5px;
+        page-break-inside: avoid;
+    }
+    label, input {
+        font-size: 12px;
+    }
+    button {
+        display: none;
+    }
+    h1, h2 {
+        page-break-after: avoid;
+    }
+    .input-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        page-break-inside: avoid;
+    }
+    #result {
+        page-break-before: avoid;
+        page-break-after: auto;
+    }
+}
+
         .intro-text {
             text-align: center;
             font-size: 14px;
@@ -81,7 +84,6 @@
         }
         .question {
             margin-bottom: 20px;
-            display: none;
         }
         label {
             display: block;
@@ -114,267 +116,149 @@
             color: #007BFF;
             width: 100%;
         }
-        .input-group {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .input-group label {
-            width: 80px;
-            font-weight: bold;
-        }
-        .input-group input {
-            flex: 1;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-    </style>
+    .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Espace entre les champs */
+}
+
+.input-group label {
+    width: 80px; /* Largeur fixe pour aligner les labels */
+    font-weight: bold; /* Optionnel : mettre en gras */
+}
+
+.input-group input {
+    flex: 1; /* Permet aux champs de s'adapter à la largeur */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+</style>
 </head>
 <body>
     <div class="container">
         <h1>Questionnaire GPAQ</h1>
         <p class="intro-text">
-            Ce questionnaire de l'OMS s'adresse aux personnes de plus de 15 ans. Je vais maintenant vous poser quelques questions sur le temps que vous consacrez à différents types d’activité physique lors d'une semaine typique.
-            Veuillez répondre à ces questions même si vous ne vous considérez pas comme quelqu’un d’actif.
-        </p>
+    Ce questionnaire de l'OMS s'adresse aux personnes de plus de 15 ans. Je vais maintenant vous poser quelques questions sur le temps que vous consacrez à différents types d’activité physique lors d'une semaine typique.
+    Veuillez répondre à ces questions même si vous ne vous considérez pas comme quelqu’un d’actif.
+</p>
         <form id="gpaqForm">
             <h2>Activité au travail</h2>
-            <div class="question" id="q1">
+            <div class="question">
                 <p>1. Votre travail implique-t-il des activités physiques intenses ?</p>
                 <label><input type="radio" name="q1" value="1"> Oui</label>
-                <label><input type="radio" name="q1" value="0"> Non</label>
+                <label><input type="radio" name="q1" value="0"> Non - Aller directement à la question 4</label>
             </div>
-            <div class="question" id="q2">
+            <div class="question">
                 <p>2. Combien de jours par semaine faites-vous ces activités ?</p>
                 <input type="number" name="q2" min="0" max="7">
             </div>
-            <div class="question" id="q3">
+            <div class="question">
                 <p>3. Combien d'heures et minutes par jour ?</p>
                 <input type="number" name="q3_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q3_minutes" min="0" max="59" placeholder="Minutes">
             </div>
 
             <h2>Activité modérée au travail</h2>
-            <div class="question" id="q4">
+            <div class="question">
                 <p>4. Votre travail implique-t-il des activités physiques modérées ?</p>
                 <label><input type="radio" name="q4" value="1"> Oui</label>
-                <label><input type="radio" name="q4" value="0"> Non</label>
+                <label><input type="radio" name="q4" value="0"> Non - Aller directement à la question 7</label>
             </div>
-            <div class="question" id="q5">
+            <div class="question">
                 <p>5. Combien de jours par semaine faites-vous ces activités ?</p>
                 <input type="number" name="q5" min="0" max="7">
             </div>
-            <div class="question" id="q6">
+            <div class="question">
                 <p>6. Combien d'heures et minutes par jour ?</p>
                 <input type="number" name="q6_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q6_minutes" min="0" max="59" placeholder="Minutes">
             </div>
 
             <h2>Déplacements</h2>
-            <div class="question" id="q7">
+            <div class="question">
                 <p>7. Effectuez-vous des trajets d’au moins 10 minutes à pied ou à vélo ?</p>
                 <label><input type="radio" name="q7" value="1"> Oui</label>
-                <label><input type="radio" name="q7" value="0"> Non</label>
+                <label><input type="radio" name="q7" value="0"> Non - Aller directement à la question 10</label>
             </div>
-            <div class="question" id="q8">
+            <div class="question">
                 <p>8. Combien de jours par semaine ?</p>
                 <input type="number" name="q8" min="0" max="7">
             </div>
-            <div class="question" id="q9">
+            <div class="question">
                 <p>9. Combien de temps y consacrez-vous par jour ?</p>
                 <input type="number" name="q9_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q9_minutes" min="0" max="59" placeholder="Minutes">
             </div>
 
             <h2>Activité de loisirs</h2>
-            <div class="question" id="q10">
+            <div class="question">
                 <p>10. Pratiquez-vous des sports ou du fitness de forte intensité ?</p>
                 <label><input type="radio" name="q10" value="1"> Oui</label>
-                <label><input type="radio" name="q10" value="0"> Non</label>
+                <label><input type="radio" name="q10" value="0"> Non - Aller directement à la question 13</label>
             </div>
-            <div class="question" id="q11">
+            <div class="question">
                 <p>11. Combien de jours par semaine ?</p>
                 <input type="number" name="q11" min="0" max="7">
             </div>
-            <div class="question" id="q12">
+            <div class="question">
                 <p>12. Combien de temps y consacrez-vous par jour ?</p>
                 <input type="number" name="q12_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q12_minutes" min="0" max="59" placeholder="Minutes">
             </div>
-
-            <h2>Activité physique modérée en loisirs</h2>
-            <div class="question" id="q13">
+            <div class="question">
                 <p>13. Pratiquez-vous des activités physiques modérées en loisirs ?</p>
                 <label><input type="radio" name="q13" value="1"> Oui</label>
-                <label><input type="radio" name="q13" value="0"> Non</label>
+                <label><input type="radio" name="q13" value="0"> Non - Aller directement à la question 16</label>
             </div>
-            <div class="question" id="q14">
+            <div class="question">
                 <p>14. Combien de jours par semaine ?</p>
                 <input type="number" name="q14" min="0" max="7">
             </div>
-            <div class="question" id="q15">
+            <div class="question">
                 <p>15. Combien de temps y consacrez-vous par jour ?</p>
                 <input type="number" name="q15_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q15_minutes" min="0" max="59" placeholder="Minutes">
             </div>
-
             <h2>Comportement sédentaire</h2>
-            <div class="question" id="q16">
+            <div class="question">
                 <p>16. Combien de temps passez-vous assis ou couché par jour (hors sommeil) ?</p>
                 <input type="number" name="q16_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q16_minutes" min="0" max="59" placeholder="Minutes">
             </div>
-
             <h2>Informations personnelles</h2>
-            <div class="input-group">
-                <label for="nom">Nom :</label>
-                <input type="text" id="nom" name="nom" placeholder="Entrez votre nom">
-            </div>
-            <div class="input-group">
-                <label for="prenom">Prénom :</label>
-                <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom">
-            </div>
-            <div class="input-group">
-                <label for="date">Date :</label>
-                <input type="text" id="date" name="date" readonly>
-            </div>
+<div class="input-group">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom" placeholder="Entrez votre nom">
+</div>
+<div class="input-group">
+    <label for="prenom">Prénom :</label>
+    <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom">
+</div>
+<div class="input-group">
+    <label for="date">Date :</label>
+    <input type="text" id="date" name="date" readonly>
+</div>
 
-            <button type="button" onclick="validateAndCalculateScore()">Soumettre</button>
+            <button type="button" onclick="calculateScore()">Soumettre</button>
             <button type="button" onclick="imprimerQuestionnaire()" style="margin-top: 10px;">Imprimer</button>
         </form>
         <div id="result"></div>
     </div>
     <script>
-        let currentQuestionIndex = 0;
-        const questions = document.querySelectorAll('.question');
-
-        function showNextQuestion() {
-            const currentQuestion = questions[currentQuestionIndex];
-            const nextQuestion = questions[currentQuestionIndex + 1];
-
-            if (currentQuestion.id === 'q1' && document.querySelector('input[name="q1"]:checked').value === '1') {
-                document.getElementById('q2').style.display = 'block';
-                document.getElementById('q2').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentQuestion.id === 'q2' && document.querySelector('input[name="q2"]').value >= 1 && document.querySelector('input[name="q2"]').value <= 7) {
-                document.getElementById('q3').style.display = 'block';
-                document.getElementById('q3').scrollIntoView({ behavior: 'smooth' });
-            } else if ((currentQuestion.id === 'q3' && document.querySelector('input[name="q3_hours"]').value) || (currentQuestion.id === 'q3' && document.querySelector('input[name="q3_minutes"]').value)) {
-                document.getElementById('q4').style.display = 'block';
-                document.getElementById('q4').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentQuestion.id === 'q4' && document.querySelector('input[name="q4"]:checked').value === '1') {
-                document.getElementById('q5').style.display = 'block';
-                document.getElementById('q5').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentQuestion.id === 'q5' && document.querySelector('input[name="q5"]').value >= 1 && document.querySelector('input[name="q5"]').value <= 7) {
-                document.getElementById('q6').style.display = 'block';
-                document.getElementById('q6').scrollIntoView({ behavior: 'smooth' });
-            } else if ((currentQuestion.id === 'q6' && document.querySelector('input[name="q6_hours"]').value) || (currentQuestion.id === 'q6' && document.querySelector('input[name="q6_minutes"]').value)) {
-                document.getElementById('q7').style.display = 'block';
-                document.getElementById('q7').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentQuestion.id === 'q7' && document.querySelector('input[name="q7"]:checked').value === '1') {
-                document.getElementById('q8').style.display = 'block';
-                document.getElementById('q8').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentQuestion.id === 'q8' && document.querySelector('input[name="q8"]').value >= 1 && document.querySelector('input[name="q8"]').value <= 7) {
-                document.getElementById('q9').style.display = 'block';
-                document.getElementById('q9').scrollIntoView({ behavior: 'smooth' });
-            } else if ((currentQuestion.id === 'q9' && document.querySelector('input[name="q9_hours"]').value) || (currentQuestion.id === 'q9' && document.querySelector('input[name="q9_minutes"]').value)) {
-                document.getElementById('q10').style.display = 'block';
-                document.getElementById('q10').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentQuestion.id === 'q10' && document.querySelector('input[name="q10"]:checked').value === '1') {
-                document.getElementById('q11').style.display = 'block';
-                document.getElementById('q11').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentQuestion.id === 'q11' && document.querySelector('input[name="q11"]').value >= 1 && document.querySelector('input[name="q11"]').value <= 7) {
-                document.getElementById('q12').style.display = 'block';
-                document.getElementById('q12').scrollIntoView({ behavior: 'smooth' });
-            } else if ((currentQuestion.id === 'q12' && document.querySelector('input[name="q12_hours"]').value) || (currentQuestion.id === 'q12' && document.querySelector('input[name="q12_minutes"]').value)) {
-                document.getElementById('q13').style.display = 'block';
-                document.getElementById('q13').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentQuestion.id === 'q13' && document.querySelector('input[name="q13"]:checked').value === '1') {
-                document.getElementById('q14').style.display = 'block';
-                document.getElementById('q14').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentQuestion.id === 'q14' && document.querySelector('input[name="q14"]').value >= 1 && document.querySelector('input[name="q14"]').value <= 7) {
-                document.getElementById('q15').style.display = 'block';
-                document.getElementById('q15').scrollIntoView({ behavior: 'smooth' });
-            } else if ((currentQuestion.id === 'q15' && document.querySelector('input[name="q15_hours"]').value) || (currentQuestion.id === 'q15' && document.querySelector('input[name="q15_minutes"]').value)) {
-                document.getElementById('q16').style.display = 'block';
-                document.getElementById('q16').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentQuestion.id === 'q1' && document.querySelector('input[name="q1"]:checked').value === '0') {
-                document.getElementById('q4').style.display = 'block';
-                document.getElementById('q4').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentQuestion.id === 'q4' && document.querySelector('input[name="q4"]:checked').value === '0') {
-                document.getElementById('q7').style.display = 'block';
-                document.getElementById('q7').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentQuestion.id === 'q7' && document.querySelector('input[name="q7"]:checked').value === '0') {
-                document.getElementById('q10').style.display = 'block';
-                document.getElementById('q10').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentQuestion.id === 'q10' && document.querySelector('input[name="q10"]:checked').value === '0') {
-                document.getElementById('q13').style.display = 'block';
-                document.getElementById('q13').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentQuestion.id === 'q13' && document.querySelector('input[name="q13"]:checked').value === '0') {
-                document.getElementById('q16').style.display = 'block';
-                document.getElementById('q16').scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        function validateAndCalculateScore() {
-            const form = document.forms['gpaqForm'];
-            const requiredQuestions = ['q1', 'q4', 'q7', 'q10', 'q13', 'q16_hours'];
-            const missingQuestions = [];
-
-            // Check if required questions are answered
-            requiredQuestions.forEach(name => {
-                const value = form[name].value;
-                if (!value) {
-                    missingQuestions.push(name);
-                }
-            });
-
-            if (missingQuestions.length > 0) {
-                alert(`Merci de répondre aux questions suivantes : ${missingQuestions.join(', ')}`);
-                return;
-            }
-
-            // Check for missing follow-up questions
-            const followUpQuestions = {
-                'q1': ['q2', 'q3_hours', 'q3_minutes'],
-                'q4': ['q5', 'q6_hours', 'q6_minutes'],
-                'q7': ['q8', 'q9_hours', 'q9_minutes'],
-                'q10': ['q11', 'q12_hours', 'q12_minutes'],
-                'q13': ['q14', 'q15_hours', 'q15_minutes']
-            };
-
-            let missingFollowUps = [];
-            for (const [key, followUps] of Object.entries(followUpQuestions)) {
-                if (form[key].value === '1') {
-                    followUps.forEach(name => {
-                        if (!form[name].value && form[name].type !== 'radio') {
-                            missingFollowUps.push(name);
-                        }
-                    });
-                }
-            }
-
-            if (missingFollowUps.length > 0) {
-                alert(`Merci de répondre aux questions suivantes : ${missingFollowUps.join(', ')}`);
-                return;
-            }
-
-            calculateScore();
-        }
-
         function calculateScore() {
             const form = document.forms['gpaqForm'];
             function getNumber(name) {
                 return form[name] && form[name].value ? parseInt(form[name].value) : 0;
             }
 
-            const APim = (getNumber('q2') * ((getNumber('q3_hours') * 60) + getNumber('q3_minutes'))) +
+            const APim = (getNumber('q2') * ((getNumber('q3_hours') * 60) + getNumber('q3_minutes'))) + 
                          (getNumber('q11') * ((getNumber('q12_hours') * 60) + getNumber('q12_minutes')));
             const APiS = APim * 8;
             const APij = getNumber('q2') + getNumber('q11');
 
-            const APmm = (getNumber('q5') * ((getNumber('q6_hours') * 60) + getNumber('q6_minutes'))) +
-                         (getNumber('q8') * ((getNumber('q9_hours') * 60) + getNumber('q9_minutes'))) +
+            const APmm = (getNumber('q5') * ((getNumber('q6_hours') * 60) + getNumber('q6_minutes'))) + 
+                         (getNumber('q8') * ((getNumber('q9_hours') * 60) + getNumber('q9_minutes'))) + 
                          (getNumber('q14') * ((getNumber('q15_hours') * 60) + getNumber('q15_minutes')));
             const APmS = APmm * 4;
             const APmj = getNumber('q5') + getNumber('q8') + getNumber('q14');
@@ -398,27 +282,38 @@
             document.getElementById('result').innerText = `Statut d'activité : ${activityStatus}
 Statut de sédentarité : ${sedentaryStatus}`;
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            questions[currentQuestionIndex].style.display = 'block'; // Show the first question
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
             const inputs = document.querySelectorAll('input[type="radio"], input[type="number"]');
-            inputs.forEach(input => {
-                input.addEventListener('change', showNextQuestion);
+            inputs.forEach((input, index) => {
+                input.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter' || event.key === 'Tab') {
+                        event.preventDefault();
+                        let nextInput = inputs[index + 1];
+                        while (nextInput && (nextInput.name === 'q4' || nextInput.name === 'q7' || nextInput.name === 'q10' || nextInput.name === 'q13')) {
+                            nextInput = inputs[index + 2];
+                        }
+                        if (nextInput) {
+                            nextInput.focus();
+                        }
+                    }
+                });
             });
         });
     </script>
     <script>
-        function setDateToday() {
-            let today = new Date();
-            let formattedDate = today.toISOString().split('T')[0];
-            document.getElementById("date").value = formattedDate;
-        }
-        window.onload = setDateToday;
-    </script>
+    function setDateToday() {
+        let today = new Date();
+        let formattedDate = today.toISOString().split('T')[0];
+        document.getElementById("date").value = formattedDate;
+    }
+    window.onload = setDateToday;
+</script>
     <script>
-        function imprimerQuestionnaire() {
-            window.print();
-        }
-    </script>
+    function imprimerQuestionnaire() {
+        window.print();
+    }
+</script>
 </body>
 </html>
