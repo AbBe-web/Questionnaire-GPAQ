@@ -261,7 +261,7 @@
 
         function validateAndCalculateScore() {
             const form = document.forms['gpaqForm'];
-            const requiredQuestions = ['q1', 'q4', 'q7', 'q10', 'q13', 'q16_hours'];
+            const requiredQuestions = ['q1', 'q4', 'q7', 'q10', 'q13'];
             const missingQuestions = [];
 
             // Check if required questions are answered
@@ -290,7 +290,7 @@
             for (const [key, followUps] of Object.entries(followUpQuestions)) {
                 if (form[key].value === '1') {
                     followUps.forEach(name => {
-                        if (!form[name].value) {
+                        if (!form[name].value && form[name].type !== 'radio') {
                             missingFollowUps.push(name);
                         }
                     });
