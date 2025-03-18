@@ -246,10 +246,26 @@
         const questions = document.querySelectorAll('.question');
 
         function showNextQuestion() {
-            if (currentQuestionIndex < questions.length) {
-                questions[currentQuestionIndex].style.display = 'block';
-                questions[currentQuestionIndex].scrollIntoView({ behavior: 'smooth' });
+            const currentQuestion = questions[currentQuestionIndex];
+            const nextQuestion = questions[currentQuestionIndex + 1];
+
+            if (currentQuestion.id === 'q1' && document.querySelector('input[name="q1"]:checked').value === '0') {
+                currentQuestionIndex = 3; // Skip to question 4
+            } else if (currentQuestion.id === 'q4' && document.querySelector('input[name="q4"]:checked').value === '0') {
+                currentQuestionIndex = 6; // Skip to question 7
+            } else if (currentQuestion.id === 'q7' && document.querySelector('input[name="q7"]:checked').value === '0') {
+                currentQuestionIndex = 9; // Skip to question 10
+            } else if (currentQuestion.id === 'q10' && document.querySelector('input[name="q10"]:checked').value === '0') {
+                currentQuestionIndex = 12; // Skip to question 13
+            } else if (currentQuestion.id === 'q13' && document.querySelector('input[name="q13"]:checked').value === '0') {
+                currentQuestionIndex = 15; // Skip to question 16
+            } else {
                 currentQuestionIndex++;
+            }
+
+            if (currentQuestionIndex < questions.length) {
+                nextQuestion.style.display = 'block';
+                nextQuestion.scrollIntoView({ behavior: 'smooth' });
             }
         }
 
