@@ -253,23 +253,66 @@
             const currentQuestion = questions[currentQuestionIndex];
             const nextQuestion = questions[currentQuestionIndex + 1];
 
-            if (currentQuestion.id === 'q1' && document.querySelector('input[name="q1"]:checked').value === '0') {
-                currentQuestionIndex = 3; // Skip to question 4
+            if (currentQuestion.id === 'q1' && document.querySelector('input[name="q1"]:checked').value === '1') {
+                document.getElementById('q2').style.display = 'block';
+                document.getElementById('q2').scrollIntoView({ behavior: 'smooth' });
+            } else if (currentQuestion.id === 'q2' && document.querySelector('input[name="q2"]').value >= 1 && document.querySelector('input[name="q2"]').value <= 7) {
+                document.getElementById('q3').style.display = 'block';
+                document.getElementById('q3').scrollIntoView({ behavior: 'smooth' });
+            } else if ((currentQuestion.id === 'q3' && document.querySelector('input[name="q3_hours"]').value) || (currentQuestion.id === 'q3' && document.querySelector('input[name="q3_minutes"]').value)) {
+                document.getElementById('q4').style.display = 'block';
+                document.getElementById('q4').scrollIntoView({ behavior: 'smooth' });
+            } else if (currentQuestion.id === 'q4' && document.querySelector('input[name="q4"]:checked').value === '1') {
+                document.getElementById('q5').style.display = 'block';
+                document.getElementById('q5').scrollIntoView({ behavior: 'smooth' });
+            } else if (currentQuestion.id === 'q5' && document.querySelector('input[name="q5"]').value >= 1 && document.querySelector('input[name="q5"]').value <= 7) {
+                document.getElementById('q6').style.display = 'block';
+                document.getElementById('q6').scrollIntoView({ behavior: 'smooth' });
+            } else if ((currentQuestion.id === 'q6' && document.querySelector('input[name="q6_hours"]').value) || (currentQuestion.id === 'q6' && document.querySelector('input[name="q6_minutes"]').value)) {
+                document.getElementById('q7').style.display = 'block';
+                document.getElementById('q7').scrollIntoView({ behavior: 'smooth' });
+            } else if (currentQuestion.id === 'q7' && document.querySelector('input[name="q7"]:checked').value === '1') {
+                document.getElementById('q8').style.display = 'block';
+                document.getElementById('q8').scrollIntoView({ behavior: 'smooth' });
+            } else if (currentQuestion.id === 'q8' && document.querySelector('input[name="q8"]').value >= 1 && document.querySelector('input[name="q8"]').value <= 7) {
+                document.getElementById('q9').style.display = 'block';
+                document.getElementById('q9').scrollIntoView({ behavior: 'smooth' });
+            } else if ((currentQuestion.id === 'q9' && document.querySelector('input[name="q9_hours"]').value) || (currentQuestion.id === 'q9' && document.querySelector('input[name="q9_minutes"]').value)) {
+                document.getElementById('q10').style.display = 'block';
+                document.getElementById('q10').scrollIntoView({ behavior: 'smooth' });
+            } else if (currentQuestion.id === 'q10' && document.querySelector('input[name="q10"]:checked').value === '1') {
+                document.getElementById('q11').style.display = 'block';
+                document.getElementById('q11').scrollIntoView({ behavior: 'smooth' });
+            } else if (currentQuestion.id === 'q11' && document.querySelector('input[name="q11"]').value >= 1 && document.querySelector('input[name="q11"]').value <= 7) {
+                document.getElementById('q12').style.display = 'block';
+                document.getElementById('q12').scrollIntoView({ behavior: 'smooth' });
+            } else if ((currentQuestion.id === 'q12' && document.querySelector('input[name="q12_hours"]').value) || (currentQuestion.id === 'q12' && document.querySelector('input[name="q12_minutes"]').value)) {
+                document.getElementById('q13').style.display = 'block';
+                document.getElementById('q13').scrollIntoView({ behavior: 'smooth' });
+            } else if (currentQuestion.id === 'q13' && document.querySelector('input[name="q13"]:checked').value === '1') {
+                document.getElementById('q14').style.display = 'block';
+                document.getElementById('q14').scrollIntoView({ behavior: 'smooth' });
+            } else if (currentQuestion.id === 'q14' && document.querySelector('input[name="q14"]').value >= 1 && document.querySelector('input[name="q14"]').value <= 7) {
+                document.getElementById('q15').style.display = 'block';
+                document.getElementById('q15').scrollIntoView({ behavior: 'smooth' });
+            } else if ((currentQuestion.id === 'q15' && document.querySelector('input[name="q15_hours"]').value) || (currentQuestion.id === 'q15' && document.querySelector('input[name="q15_minutes"]').value)) {
+                document.getElementById('q16').style.display = 'block';
+                document.getElementById('q16').scrollIntoView({ behavior: 'smooth' });
+            } else if (currentQuestion.id === 'q1' && document.querySelector('input[name="q1"]:checked').value === '0') {
+                document.getElementById('q4').style.display = 'block';
+                document.getElementById('q4').scrollIntoView({ behavior: 'smooth' });
             } else if (currentQuestion.id === 'q4' && document.querySelector('input[name="q4"]:checked').value === '0') {
-                currentQuestionIndex = 6; // Skip to question 7
+                document.getElementById('q7').style.display = 'block';
+                document.getElementById('q7').scrollIntoView({ behavior: 'smooth' });
             } else if (currentQuestion.id === 'q7' && document.querySelector('input[name="q7"]:checked').value === '0') {
-                currentQuestionIndex = 9; // Skip to question 10
+                document.getElementById('q10').style.display = 'block';
+                document.getElementById('q10').scrollIntoView({ behavior: 'smooth' });
             } else if (currentQuestion.id === 'q10' && document.querySelector('input[name="q10"]:checked').value === '0') {
-                currentQuestionIndex = 12; // Skip to question 13
+                document.getElementById('q13').style.display = 'block';
+                document.getElementById('q13').scrollIntoView({ behavior: 'smooth' });
             } else if (currentQuestion.id === 'q13' && document.querySelector('input[name="q13"]:checked').value === '0') {
-                currentQuestionIndex = 15; // Skip to question 16
-            } else {
-                currentQuestionIndex++;
-            }
-
-            if (currentQuestionIndex < questions.length) {
-                nextQuestion.style.display = 'block';
-                nextQuestion.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('q16').style.display = 'block';
+                document.getElementById('q16').scrollIntoView({ behavior: 'smooth' });
             }
         }
 
@@ -360,25 +403,7 @@ Statut de sédentarité : ${sedentaryStatus}`;
             questions[currentQuestionIndex].style.display = 'block'; // Show the first question
             const inputs = document.querySelectorAll('input[type="radio"], input[type="number"]');
             inputs.forEach(input => {
-                input.addEventListener('change', () => {
-                    showNextQuestion();
-                    if (input.name === 'q1' && input.value === '0') {
-                        document.getElementById('q4').style.display = 'block';
-                        document.getElementById('q4').scrollIntoView({ behavior: 'smooth' });
-                    } else if (input.name === 'q4' && input.value === '0') {
-                        document.getElementById('q7').style.display = 'block';
-                        document.getElementById('q7').scrollIntoView({ behavior: 'smooth' });
-                    } else if (input.name === 'q7' && input.value === '0') {
-                        document.getElementById('q10').style.display = 'block';
-                        document.getElementById('q10').scrollIntoView({ behavior: 'smooth' });
-                    } else if (input.name === 'q10' && input.value === '0') {
-                        document.getElementById('q13').style.display = 'block';
-                        document.getElementById('q13').scrollIntoView({ behavior: 'smooth' });
-                    } else if (input.name === 'q13' && input.value === '0') {
-                        document.getElementById('q16').style.display = 'block';
-                        document.getElementById('q16').scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
+                input.addEventListener('change', showNextQuestion);
             });
         });
     </script>
