@@ -145,11 +145,9 @@
                 <label><input type="radio" name="q1" value="1"> Oui</label>
                 <label><input type="radio" name="q1" value="0"> Non - Aller directement à la question 4</label>
             </div>
-            <div class="question" id="q2">
+            <div class="question" id="q2-3">
                 <p>2. Combien de jours par semaine faites-vous ces activités ?</p>
                 <input type="number" name="q2" min="0" max="7">
-            </div>
-            <div class="question" id="q3">
                 <p>3. Combien d'heures et minutes par jour ?</p>
                 <input type="number" name="q3_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q3_minutes" min="0" max="59" placeholder="Minutes">
@@ -161,11 +159,9 @@
                 <label><input type="radio" name="q4" value="1"> Oui</label>
                 <label><input type="radio" name="q4" value="0"> Non - Aller directement à la question 7</label>
             </div>
-            <div class="question" id="q5">
+            <div class="question" id="q5-6">
                 <p>5. Combien de jours par semaine faites-vous ces activités ?</p>
                 <input type="number" name="q5" min="0" max="7">
-            </div>
-            <div class="question" id="q6">
                 <p>6. Combien d'heures et minutes par jour ?</p>
                 <input type="number" name="q6_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q6_minutes" min="0" max="59" placeholder="Minutes">
@@ -177,11 +173,9 @@
                 <label><input type="radio" name="q7" value="1"> Oui</label>
                 <label><input type="radio" name="q7" value="0"> Non - Aller directement à la question 10</label>
             </div>
-            <div class="question" id="q8">
+            <div class="question" id="q8-9">
                 <p>8. Combien de jours par semaine ?</p>
                 <input type="number" name="q8" min="0" max="7">
-            </div>
-            <div class="question" id="q9">
                 <p>9. Combien de temps y consacrez-vous par jour ?</p>
                 <input type="number" name="q9_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q9_minutes" min="0" max="59" placeholder="Minutes">
@@ -193,11 +187,9 @@
                 <label><input type="radio" name="q10" value="1"> Oui</label>
                 <label><input type="radio" name="q10" value="0"> Non - Aller directement à la question 13</label>
             </div>
-            <div class="question" id="q11">
+            <div class="question" id="q11-12">
                 <p>11. Combien de jours par semaine ?</p>
                 <input type="number" name="q11" min="0" max="7">
-            </div>
-            <div class="question" id="q12">
                 <p>12. Combien de temps y consacrez-vous par jour ?</p>
                 <input type="number" name="q12_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q12_minutes" min="0" max="59" placeholder="Minutes">
@@ -207,11 +199,9 @@
                 <label><input type="radio" name="q13" value="1"> Oui</label>
                 <label><input type="radio" name="q13" value="0"> Non - Aller directement à la question 16</label>
             </div>
-            <div class="question" id="q14">
+            <div class="question" id="q14-15">
                 <p>14. Combien de jours par semaine ?</p>
                 <input type="number" name="q14" min="0" max="7">
-            </div>
-            <div class="question" id="q15">
                 <p>15. Combien de temps y consacrez-vous par jour ?</p>
                 <input type="number" name="q15_hours" min="0" max="24" placeholder="Heures">
                 <input type="number" name="q15_minutes" min="0" max="59" placeholder="Minutes">
@@ -249,16 +239,21 @@
             const currentQuestion = questions[currentQuestionIndex];
             const nextQuestion = questions[currentQuestionIndex + 1];
 
-            if (currentQuestion.id === 'q1' && document.querySelector('input[name="q1"]:checked').value === '0') {
-                currentQuestionIndex = 3; // Skip to question 4
-            } else if (currentQuestion.id === 'q4' && document.querySelector('input[name="q4"]:checked').value === '0') {
-                currentQuestionIndex = 6; // Skip to question 7
-            } else if (currentQuestion.id === 'q7' && document.querySelector('input[name="q7"]:checked').value === '0') {
-                currentQuestionIndex = 9; // Skip to question 10
-            } else if (currentQuestion.id === 'q10' && document.querySelector('input[name="q10"]:checked').value === '0') {
-                currentQuestionIndex = 12; // Skip to question 13
-            } else if (currentQuestion.id === 'q13' && document.querySelector('input[name="q13"]:checked').value === '0') {
-                currentQuestionIndex = 15; // Skip to question 16
+            if (currentQuestion.id === 'q1' && document.querySelector('input[name="q1"]:checked').value === '1') {
+                document.getElementById('q2-3').style.display = 'block';
+                currentQuestionIndex += 2; // Skip to question 4
+            } else if (currentQuestion.id === 'q4' && document.querySelector('input[name="q4"]:checked').value === '1') {
+                document.getElementById('q5-6').style.display = 'block';
+                currentQuestionIndex += 2; // Skip to question 7
+            } else if (currentQuestion.id === 'q7' && document.querySelector('input[name="q7"]:checked').value === '1') {
+                document.getElementById('q8-9').style.display = 'block';
+                currentQuestionIndex += 2; // Skip to question 10
+            } else if (currentQuestion.id === 'q10' && document.querySelector('input[name="q10"]:checked').value === '1') {
+                document.getElementById('q11-12').style.display = 'block';
+                currentQuestionIndex += 2; // Skip to question 13
+            } else if (currentQuestion.id === 'q13' && document.querySelector('input[name="q13"]:checked').value === '1') {
+                document.getElementById('q14-15').style.display = 'block';
+                currentQuestionIndex += 2; // Skip to question 16
             } else {
                 currentQuestionIndex++;
             }
