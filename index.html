@@ -239,21 +239,16 @@
             const currentQuestion = questions[currentQuestionIndex];
             const nextQuestion = questions[currentQuestionIndex + 1];
 
-            if (currentQuestion.id === 'q1' && document.querySelector('input[name="q1"]:checked').value === '1') {
-                document.getElementById('q2-3').style.display = 'block';
-                currentQuestionIndex += 2; // Skip to question 4
-            } else if (currentQuestion.id === 'q4' && document.querySelector('input[name="q4"]:checked').value === '1') {
-                document.getElementById('q5-6').style.display = 'block';
-                currentQuestionIndex += 2; // Skip to question 7
-            } else if (currentQuestion.id === 'q7' && document.querySelector('input[name="q7"]:checked').value === '1') {
-                document.getElementById('q8-9').style.display = 'block';
-                currentQuestionIndex += 2; // Skip to question 10
-            } else if (currentQuestion.id === 'q10' && document.querySelector('input[name="q10"]:checked').value === '1') {
-                document.getElementById('q11-12').style.display = 'block';
-                currentQuestionIndex += 2; // Skip to question 13
-            } else if (currentQuestion.id === 'q13' && document.querySelector('input[name="q13"]:checked').value === '1') {
-                document.getElementById('q14-15').style.display = 'block';
-                currentQuestionIndex += 2; // Skip to question 16
+            if (currentQuestion.id === 'q1' && document.querySelector('input[name="q1"]:checked').value === '0') {
+                currentQuestionIndex = 3; // Skip to question 4
+            } else if (currentQuestion.id === 'q4' && document.querySelector('input[name="q4"]:checked').value === '0') {
+                currentQuestionIndex = 6; // Skip to question 7
+            } else if (currentQuestion.id === 'q7' && document.querySelector('input[name="q7"]:checked').value === '0') {
+                currentQuestionIndex = 9; // Skip to question 10
+            } else if (currentQuestion.id === 'q10' && document.querySelector('input[name="q10"]:checked').value === '0') {
+                currentQuestionIndex = 12; // Skip to question 13
+            } else if (currentQuestion.id === 'q13' && document.querySelector('input[name="q13"]:checked').value === '0') {
+                currentQuestionIndex = 15; // Skip to question 16
             } else {
                 currentQuestionIndex++;
             }
@@ -351,7 +346,25 @@ Statut de sédentarité : ${sedentaryStatus}`;
             questions[currentQuestionIndex].style.display = 'block'; // Show the first question
             const inputs = document.querySelectorAll('input[type="radio"], input[type="number"]');
             inputs.forEach(input => {
-                input.addEventListener('change', showNextQuestion);
+                input.addEventListener('change', () => {
+                    showNextQuestion();
+                    if (input.name === 'q1' && input.value === '0') {
+                        document.getElementById('q4').style.display = 'block';
+                        document.getElementById('q4').scrollIntoView({ behavior: 'smooth' });
+                    } else if (input.name === 'q4' && input.value === '0') {
+                        document.getElementById('q7').style.display = 'block';
+                        document.getElementById('q7').scrollIntoView({ behavior: 'smooth' });
+                    } else if (input.name === 'q7' && input.value === '0') {
+                        document.getElementById('q10').style.display = 'block';
+                        document.getElementById('q10').scrollIntoView({ behavior: 'smooth' });
+                    } else if (input.name === 'q10' && input.value === '0') {
+                        document.getElementById('q13').style.display = 'block';
+                        document.getElementById('q13').scrollIntoView({ behavior: 'smooth' });
+                    } else if (input.name === 'q13' && input.value === '0') {
+                        document.getElementById('q16').style.display = 'block';
+                        document.getElementById('q16').scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
             });
         });
     </script>
