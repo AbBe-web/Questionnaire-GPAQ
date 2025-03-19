@@ -33,6 +33,10 @@
             .question {
                 margin-bottom: 25px;
             }
+            .question p {
+                font-size: 14px;
+                word-wrap: break-word;
+            }
         }
         h1, h2 {
             text-align: center;
@@ -312,7 +316,7 @@
 
             if (radio.value === '1') {
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                if (nextQuestionElement) {
+                if (nextQuestionElement && ![3, 6, 9, 12, 15].includes(nextQuestion)) {
                     nextQuestionElement.scrollIntoView({ behavior: 'smooth' });
                 }
             } else {
@@ -332,7 +336,9 @@
                 const questionNumber = parseInt(input.name.slice(1));
                 const nextQuestion = questionNumber + 1;
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                document.getElementById(`q${nextQuestion}`).scrollIntoView({ behavior: 'smooth' });
+                if (![3, 6, 9, 12, 15].includes(nextQuestion)) {
+                    document.getElementById(`q${nextQuestion}`).scrollIntoView({ behavior: 'smooth' });
+                }
             }
         }
 
@@ -344,7 +350,9 @@
             if (hoursInput.value !== '' || minutesInput.value !== '') {
                 const nextQuestion = questionNumber + 1;
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                document.getElementById(`q${nextQuestion}`).scrollIntoView({ behavior: 'smooth' });
+                if (![4, 7, 10, 13, 16].includes(nextQuestion)) {
+                    document.getElementById(`q${nextQuestion}`).scrollIntoView({ behavior: 'smooth' });
+                }
             }
         }
 
