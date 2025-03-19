@@ -410,11 +410,11 @@
 
             let activityStatus;
             if ((APij >= 3 && APtS >= 1500) || (APtj >= 7 && APtS >= 3000)) {
-                activityStatus = `Très actif (${APtS} MET-min/semaine). Vous êtes classé dans une des catégories suivantes : insuffisamment actif, actif ou très actif.`;
+                activityStatus = `Très actif (${APtS} MET-min/semaine)`;
             } else if ((APij >= 3 && APim >= 60) || (APmj >= 5 && APmm >= 150) || (APtj >= 5 && APtS >= 600)) {
-                activityStatus = `Actif (${APtS} MET-min/semaine). Vous êtes classé dans une des catégories suivantes : insuffisamment actif, actif ou très actif.`;
+                activityStatus = `Actif (${APtS} MET-min/semaine)`;
             } else {
-                activityStatus = `Insuffisamment actif (${APtS} MET-min/semaine). Vous êtes classé dans une des catégories suivantes : insuffisamment actif, actif ou très actif.`;
+                activityStatus = `Insuffisamment actif (${APtS} MET-min/semaine)`;
             }
 
             const sedentaryStatus = S >= 7 ? `Sédentaire (${S.toFixed(1)}h)` : `Non sédentaire (${S.toFixed(1)}h)`;
