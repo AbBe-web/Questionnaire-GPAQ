@@ -164,7 +164,9 @@
             </div>
             <div class="question" id="q2">
                 <p>2. Combien de jours par semaine faites-vous ces activités ?</p>
-                <input type="number" name="q2" min="0" max="7">
+                <div class="input-group">
+                    <input type="number" name="q2" min="0" max="7">
+                </div>
                 <div class="error-message" id="error-q2">Merci d'indiquer un nombre entre 1 et 7.</div>
             </div>
             <div class="question" id="q3">
@@ -183,7 +185,9 @@
             </div>
             <div class="question" id="q5">
                 <p>5. Combien de jours par semaine faites-vous ces activités ?</p>
-                <input type="number" name="q5" min="0" max="7">
+                <div class="input-group">
+                    <input type="number" name="q5" min="0" max="7">
+                </div>
                 <div class="error-message" id="error-q5">Merci d'indiquer un nombre entre 1 et 7.</div>
             </div>
             <div class="question" id="q6">
@@ -202,7 +206,9 @@
             </div>
             <div class="question" id="q8">
                 <p>8. Combien de jours par semaine ?</p>
-                <input type="number" name="q8" min="0" max="7">
+                <div class="input-group">
+                    <input type="number" name="q8" min="0" max="7">
+                </div>
                 <div class="error-message" id="error-q8">Merci d'indiquer un nombre entre 1 et 7.</div>
             </div>
             <div class="question" id="q9">
@@ -221,7 +227,9 @@
             </div>
             <div class="question" id="q11">
                 <p>11. Combien de jours par semaine ?</p>
-                <input type="number" name="q11" min="0" max="7">
+                <div class="input-group">
+                    <input type="number" name="q11" min="0" max="7">
+                </div>
                 <div class="error-message" id="error-q11">Merci d'indiquer un nombre entre 1 et 7.</div>
             </div>
             <div class="question" id="q12">
@@ -238,7 +246,9 @@
             </div>
             <div class="question" id="q14">
                 <p>14. Combien de jours par semaine ?</p>
-                <input type="number" name="q14" min="0" max="7">
+                <div class="input-group">
+                    <input type="number" name="q14" min="0" max="7">
+                </div>
                 <div class="error-message" id="error-q14">Merci d'indiquer un nombre entre 1 et 7.</div>
             </div>
             <div class="question" id="q15">
@@ -400,11 +410,11 @@
 
             let activityStatus;
             if ((APij >= 3 && APtS >= 1500) || (APtj >= 7 && APtS >= 3000)) {
-                activityStatus = `Très actif (${APtS} MET-min/semaine)`;
+                activityStatus = `Très actif (${APtS} MET-min/semaine). Vous êtes classé dans une des catégories suivantes : insuffisamment actif, actif ou très actif.`;
             } else if ((APij >= 3 && APim >= 60) || (APmj >= 5 && APmm >= 150) || (APtj >= 5 && APtS >= 600)) {
-                activityStatus = `Moyennement actif (${APtS} MET-min/semaine)`;
+                activityStatus = `Actif (${APtS} MET-min/semaine). Vous êtes classé dans une des catégories suivantes : insuffisamment actif, actif ou très actif.`;
             } else {
-                activityStatus = `Insuffisamment actif (${APtS} MET-min/semaine)`;
+                activityStatus = `Insuffisamment actif (${APtS} MET-min/semaine). Vous êtes classé dans une des catégories suivantes : insuffisamment actif, actif ou très actif.`;
             }
 
             const sedentaryStatus = S >= 7 ? `Sédentaire (${S.toFixed(1)}h)` : `Non sédentaire (${S.toFixed(1)}h)`;
