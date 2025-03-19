@@ -277,6 +277,11 @@
                 input.addEventListener('touchend', function(event) {
                     handleInputChange(event.target);
                 });
+
+                // Ajout d'un événement de changement pour les PC
+                input.addEventListener('change', function(event) {
+                    handleInputChange(event.target);
+                });
             });
 
             const radioButtons = document.querySelectorAll('input[type="radio"]');
