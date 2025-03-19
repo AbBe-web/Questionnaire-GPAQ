@@ -283,11 +283,18 @@
                     validateNumberInput(this);
                 });
             });
+
+            const timeInputs = document.querySelectorAll('input[name$="_hours"], input[name$="_minutes"]');
+            timeInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    checkTimeInputs(this);
+                });
+            });
         });
 
         function handleRadioChange(radio) {
-            const questionNumber = radio.name.slice(1);
-            const nextQuestion = parseInt(questionNumber) + 1;
+            const questionNumber = parseInt(radio.name.slice(1));
+            const nextQuestion = questionNumber + 1;
             const nextQuestionElement = document.getElementById(`q${nextQuestion}`);
 
             if (radio.value === '1') {
@@ -296,7 +303,7 @@
                     nextQuestionElement.scrollIntoView({ behavior: 'smooth' });
                 }
             } else {
-                const skipToQuestion = parseInt(questionNumber) + 3;
+                const skipToQuestion = questionNumber + 3;
                 document.getElementById(`q${skipToQuestion}`).style.display = 'block';
                 document.getElementById(`q${skipToQuestion}`).scrollIntoView({ behavior: 'smooth' });
             }
@@ -309,9 +316,18 @@
                 errorMessage.style.display = 'block';
             } else {
                 errorMessage.style.display = 'none';
-                const questionNumber = parseInt(input.name.slice(1)) + 1;
-                document.getElementById(`q${questionNumber}`).style.display = 'block';
-                document.getElementById(`q${questionNumber}`).scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function checkTimeInputs(input) {
+            const questionNumber = parseInt(input.name.match(/\d+/)[0]);
+            const hoursInput = document.querySelector(`input[name="q${questionNumber}_hours"]`);
+            const minutesInput = document.querySelector(`input[name="q${questionNumber}_minutes"]`);
+
+            if (hoursInput.value !== '' || minutesInput.value !== '') {
+                const nextQuestion = questionNumber + 1;
+                document.getElementById(`q${nextQuestion}`).style.display = 'block';
+                document.getElementById(`q${nextQuestion}`).scrollIntoView({ behavior: 'smooth' });
             }
         }
 
