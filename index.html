@@ -44,6 +44,12 @@
                 margin-right: 5px;
                 margin-left: 5px;
             }
+            h1 {
+                font-size: 20px;
+            }
+            .intro-text {
+                font-size: 14px;
+            }
         }
         h1, h2 {
             text-align: center;
@@ -63,6 +69,7 @@
             .question {
                 margin-bottom: 5px;
                 page-break-inside: avoid;
+                display: block !important; /* Affiche toutes les questions */
             }
             label, input {
                 font-size: 12px;
@@ -426,6 +433,10 @@ Statut de sédentarité : ${sedentaryStatus}`;
         window.onload = setDateToday;
 
         function imprimerQuestionnaire() {
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(question => {
+                question.style.display = 'block';
+            });
             window.print();
         }
     </script>
