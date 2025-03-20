@@ -5,32 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Questionnaire GPAQ</title>
     <style>
-        body, html {
+        body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             margin: 0;
-            padding: 0;
-            height: 100%;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh; /* Utilise toute la hauteur de la fenêtre */
         }
         .container {
             background: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 600px;
+            max-width: 100%;
             width: 100%;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Inclut le padding dans la largeur totale */
         }
         @media (max-width: 600px) {
-            .container {
-                height: auto;
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-            }
             .input-group input {
                 font-size: 16px;
                 padding: 12px;
@@ -49,12 +43,6 @@
                 width: calc(50% - 10px); /* Adjust width to fit screen */
                 margin-right: 5px;
                 margin-left: 5px;
-            }
-            #result {
-                margin-top: auto;
-            }
-            button[type="button"] {
-                margin-top: 20px;
             }
         }
         h1, h2 {
@@ -353,11 +341,13 @@
 
             if (radio.value === '1') {
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                scrollToBottom();
+                if (nextQuestionElement && ![3, 6, 9, 12, 15].includes(nextQuestion)) {
+                    // No automatic scrolling
+                }
             } else {
                 const skipToQuestion = questionNumber + 3;
                 document.getElementById(`q${skipToQuestion}`).style.display = 'block';
-                scrollToBottom();
+                // No automatic scrolling
             }
         }
 
@@ -371,7 +361,9 @@
                 const questionNumber = parseInt(input.name.slice(1));
                 const nextQuestion = questionNumber + 1;
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                scrollToBottom();
+                if (![3, 6, 9, 12, 15].includes(nextQuestion)) {
+                    // No automatic scrolling
+                }
             }
         }
 
@@ -383,7 +375,9 @@
             if (hoursInput.value !== '' || minutesInput.value !== '') {
                 const nextQuestion = questionNumber + 1;
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                scrollToBottom();
+                if (![4, 7, 10, 13, 16].includes(nextQuestion)) {
+                    // No automatic scrolling
+                }
             }
         }
 
@@ -422,7 +416,6 @@
 
             document.getElementById('result').innerText = `Statut d'activité : ${activityStatus}
 Statut de sédentarité : ${sedentaryStatus}`;
-            scrollToBottom();
         }
 
         function setDateToday() {
@@ -434,13 +427,6 @@ Statut de sédentarité : ${sedentaryStatus}`;
 
         function imprimerQuestionnaire() {
             window.print();
-        }
-
-        function scrollToBottom() {
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: 'smooth'
-            });
         }
     </script>
 </body>
