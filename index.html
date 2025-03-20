@@ -2,14 +2,15 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Questionnaire GPAQ</title>
     <style>
-        body {
+        body, html {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -21,8 +22,15 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
             max-width: 600px;
             width: 100%;
+            box-sizing: border-box;
         }
         @media (max-width: 600px) {
+            .container {
+                height: auto;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
             .input-group input {
                 font-size: 16px;
                 padding: 12px;
@@ -41,16 +49,6 @@
                 width: calc(50% - 10px); /* Adjust width to fit screen */
                 margin-right: 5px;
                 margin-left: 5px;
-            }
-            .container {
-                height: 100vh;
-                overflow-y: auto;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-            }
-            .question {
-                flex: 1;
             }
             #result {
                 margin-top: auto;
@@ -355,9 +353,11 @@
 
             if (radio.value === '1') {
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
+                scrollToBottom();
             } else {
                 const skipToQuestion = questionNumber + 3;
                 document.getElementById(`q${skipToQuestion}`).style.display = 'block';
+                scrollToBottom();
             }
         }
 
@@ -371,6 +371,7 @@
                 const questionNumber = parseInt(input.name.slice(1));
                 const nextQuestion = questionNumber + 1;
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
+                scrollToBottom();
             }
         }
 
@@ -382,6 +383,7 @@
             if (hoursInput.value !== '' || minutesInput.value !== '') {
                 const nextQuestion = questionNumber + 1;
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
+                scrollToBottom();
             }
         }
 
@@ -420,6 +422,7 @@
 
             document.getElementById('result').innerText = `Statut d'activité : ${activityStatus}
 Statut de sédentarité : ${sedentaryStatus}`;
+            scrollToBottom();
         }
 
         function setDateToday() {
@@ -431,6 +434,13 @@ Statut de sédentarité : ${sedentaryStatus}`;
 
         function imprimerQuestionnaire() {
             window.print();
+        }
+
+        function scrollToBottom() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
         }
     </script>
 </body>
