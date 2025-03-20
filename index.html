@@ -42,6 +42,22 @@
                 margin-right: 5px;
                 margin-left: 5px;
             }
+            .container {
+                height: 100vh;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .question {
+                flex: 1;
+            }
+            #result {
+                margin-top: auto;
+            }
+            button[type="button"] {
+                margin-top: 20px;
+            }
         }
         h1, h2 {
             text-align: center;
@@ -339,13 +355,9 @@
 
             if (radio.value === '1') {
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                if (nextQuestionElement && ![3, 6, 9, 12, 15].includes(nextQuestion)) {
-                    nextQuestionElement.scrollIntoView({ behavior: 'smooth' });
-                }
             } else {
                 const skipToQuestion = questionNumber + 3;
                 document.getElementById(`q${skipToQuestion}`).style.display = 'block';
-                document.getElementById(`q${skipToQuestion}`).scrollIntoView({ behavior: 'smooth' });
             }
         }
 
@@ -359,9 +371,6 @@
                 const questionNumber = parseInt(input.name.slice(1));
                 const nextQuestion = questionNumber + 1;
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                if (![3, 6, 9, 12, 15].includes(nextQuestion)) {
-                    document.getElementById(`q${nextQuestion}`).scrollIntoView({ behavior: 'smooth' });
-                }
             }
         }
 
@@ -373,9 +382,6 @@
             if (hoursInput.value !== '' || minutesInput.value !== '') {
                 const nextQuestion = questionNumber + 1;
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                if (![4, 7, 10, 13, 16].includes(nextQuestion)) {
-                    document.getElementById(`q${nextQuestion}`).scrollIntoView({ behavior: 'smooth' });
-                }
             }
         }
 
