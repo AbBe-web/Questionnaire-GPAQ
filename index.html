@@ -99,7 +99,6 @@
         }
         .question {
             margin-bottom: 20px;
-            display: none;
         }
         label {
             display: block;
@@ -344,14 +343,9 @@
         function handleRadioChange(radio) {
             const questionNumber = parseInt(radio.name.slice(1));
             const nextQuestion = questionNumber + 1;
-            const nextQuestionElement = document.getElementById(`q${nextQuestion}`);
 
-            if (radio.value === '1') {
-                document.getElementById(`q${nextQuestion}`).style.display = 'block';
-            } else {
-                const skipToQuestion = questionNumber + 3;
-                document.getElementById(`q${skipToQuestion}`).style.display = 'block';
-            }
+            // Afficher la question suivante sans masquer les précédentes
+            document.getElementById(`q${nextQuestion}`).style.display = 'block';
         }
 
         function validateNumberInput(input) {
