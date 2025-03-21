@@ -99,6 +99,7 @@
         }
         .question {
             margin-bottom: 20px;
+            display: none;
         }
         label {
             display: block;
@@ -424,10 +425,7 @@
 Statut de sédentarité : ${sedentaryStatus}`;
 
             // Afficher toutes les questions après la soumission
-            const questions = document.querySelectorAll('.question');
-            questions.forEach(question => {
-                question.style.display = 'block';
-            });
+            showAllQuestions();
         }
 
         function setDateToday() {
@@ -438,11 +436,16 @@ Statut de sédentarité : ${sedentaryStatus}`;
         window.onload = setDateToday;
 
         function imprimerQuestionnaire() {
+            // Afficher toutes les questions avant l'impression
+            showAllQuestions();
+            window.print();
+        }
+
+        function showAllQuestions() {
             const questions = document.querySelectorAll('.question');
             questions.forEach(question => {
                 question.style.display = 'block';
             });
-            window.print();
         }
     </script>
 </body>
