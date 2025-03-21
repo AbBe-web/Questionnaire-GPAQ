@@ -348,13 +348,9 @@
 
             if (radio.value === '1') {
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                if (nextQuestionElement && ![3, 6, 9, 12, 15].includes(nextQuestion)) {
-                    // No automatic scrolling
-                }
             } else {
                 const skipToQuestion = questionNumber + 3;
                 document.getElementById(`q${skipToQuestion}`).style.display = 'block';
-                // No automatic scrolling
             }
         }
 
@@ -368,9 +364,6 @@
                 const questionNumber = parseInt(input.name.slice(1));
                 const nextQuestion = questionNumber + 1;
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                if (![3, 6, 9, 12, 15].includes(nextQuestion)) {
-                    // No automatic scrolling
-                }
             }
         }
 
@@ -382,9 +375,6 @@
             if (hoursInput.value !== '' || minutesInput.value !== '') {
                 const nextQuestion = questionNumber + 1;
                 document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                if (![4, 7, 10, 13, 16].includes(nextQuestion)) {
-                    // No automatic scrolling
-                }
             }
         }
 
