@@ -4,156 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Questionnaire GPAQ</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Utilise toute la hauteur de la fenêtre */
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 100%;
-            width: 100%;
-            box-sizing: border-box; /* Inclut le padding dans la largeur totale */
-        }
-        @media (max-width: 600px) {
-            .input-group input {
-                font-size: 16px;
-                padding: 12px;
-            }
-            label {
-                font-size: 14px;
-            }
-            .question {
-                margin-bottom: 25px;
-            }
-            .question p {
-                font-size: 14px;
-                word-wrap: break-word;
-            }
-            .question input[type="number"] {
-                width: calc(50% - 10px); /* Adjust width to fit screen */
-                margin-right: 5px;
-                margin-left: 5px;
-            }
-            h1 {
-                font-size: 20px;
-            }
-            .intro-text {
-                font-size: 14px;
-            }
-        }
-        h1, h2 {
-            text-align: center;
-            color: #333;
-        }
-        @media print {
-            body {
-                font-size: 12px;
-                margin: 0;
-                padding: 0;
-            }
-            .container {
-                max-width: 100%;
-                width: auto;
-                padding: 10px;
-            }
-            .question {
-                margin-bottom: 5px;
-                page-break-inside: avoid;
-                display: block !important; /* Affiche toutes les questions */
-            }
-            label, input {
-                font-size: 12px;
-            }
-            button {
-                display: none;
-            }
-            h1, h2 {
-                page-break-after: avoid;
-            }
-            .input-group {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                page-break-inside: avoid;
-            }
-            #result {
-                page-break-before: avoid;
-                page-break-after: auto;
-            }
-        }
-        .intro-text {
-            text-align: center;
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 20px;
-        }
-        .question {
-            margin-bottom: 20px;
-            display: none;
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Utilise toute la hauteur de la fenêtre */
+    }
+    .container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box; /* Inclut le padding dans la largeur totale */
+    }
+    @media (max-width: 600px) {
+        .input-group input {
+            font-size: 16px;
+            padding: 12px;
         }
         label {
-            display: block;
-            padding: 5px;
-            cursor: pointer;
+            font-size: 14px;
         }
-        input[type="radio"], input[type="number"] {
-            margin-right: 8px;
+        .question {
+            margin-bottom: 25px;
+        }
+        .question p {
+            font-size: 14px;
+            word-wrap: break-word;
+        }
+        .question input[type="number"] {
+            width: calc(50% - 10px); /* Adjust width to fit screen */
+            margin-right: 5px;
+            margin-left: 5px;
+        }
+        h1 {
+            font-size: 20px;
+        }
+        .intro-text {
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 1.5em; /* Réduire la taille de la police pour le titre */
+        }
+        .intro-text {
+            font-size: 1em; /* Réduire la taille de la police pour le sous-titre */
+        }
+        .container {
+            padding: 10px; /* Réduire le padding pour gagner de l'espace */
+        }
+    }
+    h1, h2 {
+        text-align: center;
+        color: #333;
+    }
+    @media print {
+        body {
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 100%;
+            width: auto;
+            padding: 10px;
+        }
+        .question {
+            margin-bottom: 5px;
+            page-break-inside: avoid;
+            display: block !important; /* Affiche toutes les questions */
+        }
+        label, input {
+            font-size: 12px;
         }
         button {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px;
-            border: none;
-            width: 100%;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
+            display: none;
         }
-        button:hover {
-            background-color: #0056b3;
-        }
-        #result {
-            margin-top: 20px;
-            font-weight: bold;
-            text-align: center;
-            padding: 10px;
-            border-radius: 5px;
-            background: #e3f2fd;
-            color: #007BFF;
-            width: 100%;
+        h1, h2 {
+            page-break-after: avoid;
         }
         .input-group {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
+            page-break-inside: avoid;
         }
-        .input-group label {
-            width: 100%;
-            font-weight: bold;
+        #result {
+            page-break-before: avoid;
+            page-break-after: auto;
         }
-        .input-group input {
-            flex: 1;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .error-message {
-            color: red;
-            font-size: 14px;
-            display: none;
-        }
-    </style>
+    }
+    .intro-text {
+        text-align: center;
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+    .question {
+        margin-bottom: 20px;
+        display: none;
+    }
+    label {
+        display: block;
+        padding: 5px;
+        cursor: pointer;
+    }
+    input[type="radio"], input[type="number"] {
+        margin-right: 8px;
+    }
+    button {
+        background-color: #007BFF;
+        color: white;
+        padding: 10px;
+        border: none;
+        width: 100%;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    #result {
+        margin-top: 20px;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        background: #e3f2fd;
+        color: #007BFF;
+        width: 100%;
+    }
+    .input-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+    }
+    .input-group label {
+        width: 100%;
+        font-weight: bold;
+    }
+    .input-group input {
+        flex: 1;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .error-message {
+        color: red;
+        font-size: 14px;
+        display: none;
+    }
+</style>
 </head>
 <body>
     <div class="container">
