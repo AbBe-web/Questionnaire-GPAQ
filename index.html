@@ -339,6 +339,21 @@
 
             document.getElementById('result').innerText = `Statut d'activité : ${activityStatus}
 Statut de sédentarité : ${sedentaryStatus}`;
+
+            // Scroll to the result section
+            scrollToResult();
+        }
+
+        function scrollToResult() {
+            const resultElement = document.getElementById('result');
+            if (resultElement) {
+                const offset = 20; // Ajustez cette valeur pour augmenter ou diminuer la marge
+                const topPos = resultElement.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({
+                    top: topPos,
+                    behavior: 'smooth'
+                });
+            }
         }
 
         function scrollToQuestion(questionNumber) {
