@@ -2,100 +2,80 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionnaire GPAQ</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Utilise toute la hauteur de la fenêtre */
         }
         .container {
             background: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
             width: 100%;
-            box-sizing: border-box; /* Inclut le padding dans la largeur totale */
         }
-        @media (max-width: 600px) {
-            .input-group input {
-                font-size: 16px;
-                padding: 12px;
-            }
-            label {
-                font-size: 14px;
-            }
-            .question {
-                margin-bottom: 25px;
-            }
-            .question p {
-                font-size: 14px;
-                word-wrap: break-word;
-            }
-            .question input[type="number"] {
-                width: calc(50% - 10px); /* Adjust width to fit screen */
-                margin-right: 5px;
-                margin-left: 5px;
-            }
-            h1 {
-                font-size: 5vw; /* Utiliser une taille relative à la largeur de l'écran */
-                margin-bottom: 10px;
-            }
-            .intro-text {
-                font-size: 4vw; /* Utiliser une taille relative à la largeur de l'écran */
-                margin-bottom: 15px;
-                line-height: 1.4;
-            }
-            .container {
-                padding: 15px;
-            }
-        }
+              @media (max-width: 600px) {
+    .input-group input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    .question {
+        margin-bottom: 25px;
+    }
+}
         h1, h2 {
             text-align: center;
             color: #333;
         }
         @media print {
-            body {
-                font-size: 12px;
-                margin: 0;
-                padding: 0;
-            }
-            .container {
-                max-width: 100%;
-                width: auto;
-                padding: 10px;
-            }
-            .question {
-                margin-bottom: 5px;
-                page-break-inside: avoid;
-                display: block !important; /* Affiche toutes les questions */
-            }
-            label, input {
-                font-size: 12px;
-            }
-            button {
-                display: none;
-            }
-            h1, h2 {
-                page-break-after: avoid;
-            }
-            .input-group {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                page-break-inside: avoid;
-            }
-            #result {
-                page-break-before: avoid;
-                page-break-after: auto;
-            }
-        }
+    body {
+        font-size: 12px;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 100%;
+        width: auto;
+        padding: 10px;
+    }
+    .question {
+        margin-bottom: 5px;
+        page-break-inside: avoid;
+    }
+    label, input {
+        font-size: 12px;
+    }
+    button {
+        display: none;
+    }
+    h1, h2 {
+        page-break-after: avoid;
+    }
+    .input-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        page-break-inside: avoid;
+    }
+    #result {
+        page-break-before: avoid;
+        page-break-after: auto;
+    }
+}
+
         .intro-text {
             text-align: center;
             font-size: 14px;
@@ -104,7 +84,6 @@
         }
         .question {
             margin-bottom: 20px;
-            display: none;
         }
         label {
             display: block;
@@ -137,150 +116,129 @@
             color: #007BFF;
             width: 100%;
         }
-        .input-group {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
-        }
-        .input-group label {
-            width: 100%;
-            font-weight: bold;
-        }
-        .input-group input {
-            flex: 1;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .error-message {
-            color: red;
-            font-size: 14px;
-            display: none;
-        }
-    </style>
+    .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Espace entre les champs */
+}
+
+.input-group label {
+    width: 80px; /* Largeur fixe pour aligner les labels */
+    font-weight: bold; /* Optionnel : mettre en gras */
+}
+
+.input-group input {
+    flex: 1; /* Permet aux champs de s'adapter à la largeur */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+</style>
 </head>
 <body>
     <div class="container">
         <h1>Questionnaire GPAQ</h1>
         <p class="intro-text">
-            Ce questionnaire de l'OMS s'adresse aux personnes de plus de 15 ans. Je vais maintenant vous poser quelques questions sur le temps que vous consacrez à différents types d’activité physique lors d'une semaine typique.
-            Veuillez répondre à ces questions même si vous ne vous considérez pas comme quelqu’un d’actif.
-        </p>
+    Ce questionnaire de l'OMS s'adresse aux personnes de plus de 15 ans. Je vais maintenant vous poser quelques questions sur le temps que vous consacrez à différents types d’activité physique lors d'une semaine typique.
+    Veuillez répondre à ces questions même si vous ne vous considérez pas comme quelqu’un d’actif.
+</p>
         <form id="gpaqForm">
             <h2>Activité au travail</h2>
-            <div class="question" id="q1">
+            <div class="question">
                 <p>1. Votre travail implique-t-il des activités physiques intenses ?</p>
                 <label><input type="radio" name="q1" value="1"> Oui</label>
                 <label><input type="radio" name="q1" value="0"> Non - Aller directement à la question 4</label>
             </div>
-            <div class="question" id="q2">
+            <div class="question">
                 <p>2. Combien de jours par semaine faites-vous ces activités ?</p>
                 <input type="number" name="q2" min="0" max="7">
-                <div class="error-message" id="error-q2">Merci d'indiquer un nombre entre 1 et 7.</div>
             </div>
-            <div class="question" id="q3">
+            <div class="question">
                 <p>3. Combien d'heures et minutes par jour ?</p>
-                <div class="input-group">
-                    <input type="number" name="q3_hours" min="0" max="24" placeholder="Heures">
-                    <input type="number" name="q3_minutes" min="0" max="59" placeholder="Minutes">
-                </div>
+                <input type="number" name="q3_hours" min="0" max="24" placeholder="Heures">
+                <input type="number" name="q3_minutes" min="0" max="59" placeholder="Minutes">
             </div>
 
             <h2>Activité modérée au travail</h2>
-            <div class="question" id="q4">
+            <div class="question">
                 <p>4. Votre travail implique-t-il des activités physiques modérées ?</p>
                 <label><input type="radio" name="q4" value="1"> Oui</label>
                 <label><input type="radio" name="q4" value="0"> Non - Aller directement à la question 7</label>
             </div>
-            <div class="question" id="q5">
+            <div class="question">
                 <p>5. Combien de jours par semaine faites-vous ces activités ?</p>
                 <input type="number" name="q5" min="0" max="7">
-                <div class="error-message" id="error-q5">Merci d'indiquer un nombre entre 1 et 7.</div>
             </div>
-            <div class="question" id="q6">
+            <div class="question">
                 <p>6. Combien d'heures et minutes par jour ?</p>
-                <div class="input-group">
-                    <input type="number" name="q6_hours" min="0" max="24" placeholder="Heures">
-                    <input type="number" name="q6_minutes" min="0" max="59" placeholder="Minutes">
-                </div>
+                <input type="number" name="q6_hours" min="0" max="24" placeholder="Heures">
+                <input type="number" name="q6_minutes" min="0" max="59" placeholder="Minutes">
             </div>
 
             <h2>Déplacements</h2>
-            <div class="question" id="q7">
+            <div class="question">
                 <p>7. Effectuez-vous des trajets d’au moins 10 minutes à pied ou à vélo ?</p>
                 <label><input type="radio" name="q7" value="1"> Oui</label>
                 <label><input type="radio" name="q7" value="0"> Non - Aller directement à la question 10</label>
             </div>
-            <div class="question" id="q8">
+            <div class="question">
                 <p>8. Combien de jours par semaine ?</p>
                 <input type="number" name="q8" min="0" max="7">
-                <div class="error-message" id="error-q8">Merci d'indiquer un nombre entre 1 et 7.</div>
             </div>
-            <div class="question" id="q9">
+            <div class="question">
                 <p>9. Combien de temps y consacrez-vous par jour ?</p>
-                <div class="input-group">
-                    <input type="number" name="q9_hours" min="0" max="24" placeholder="Heures">
-                    <input type="number" name="q9_minutes" min="0" max="59" placeholder="Minutes">
-                </div>
+                <input type="number" name="q9_hours" min="0" max="24" placeholder="Heures">
+                <input type="number" name="q9_minutes" min="0" max="59" placeholder="Minutes">
             </div>
 
             <h2>Activité de loisirs</h2>
-            <div class="question" id="q10">
+            <div class="question">
                 <p>10. Pratiquez-vous des sports ou du fitness de forte intensité ?</p>
                 <label><input type="radio" name="q10" value="1"> Oui</label>
                 <label><input type="radio" name="q10" value="0"> Non - Aller directement à la question 13</label>
             </div>
-            <div class="question" id="q11">
+            <div class="question">
                 <p>11. Combien de jours par semaine ?</p>
                 <input type="number" name="q11" min="0" max="7">
-                <div class="error-message" id="error-q11">Merci d'indiquer un nombre entre 1 et 7.</div>
             </div>
-            <div class="question" id="q12">
+            <div class="question">
                 <p>12. Combien de temps y consacrez-vous par jour ?</p>
-                <div class="input-group">
-                    <input type="number" name="q12_hours" min="0" max="24" placeholder="Heures">
-                    <input type="number" name="q12_minutes" min="0" max="59" placeholder="Minutes">
-                </div>
+                <input type="number" name="q12_hours" min="0" max="24" placeholder="Heures">
+                <input type="number" name="q12_minutes" min="0" max="59" placeholder="Minutes">
             </div>
-            <div class="question" id="q13">
+            <div class="question">
                 <p>13. Pratiquez-vous des activités physiques modérées en loisirs ?</p>
                 <label><input type="radio" name="q13" value="1"> Oui</label>
                 <label><input type="radio" name="q13" value="0"> Non - Aller directement à la question 16</label>
             </div>
-            <div class="question" id="q14">
+            <div class="question">
                 <p>14. Combien de jours par semaine ?</p>
                 <input type="number" name="q14" min="0" max="7">
-                <div class="error-message" id="error-q14">Merci d'indiquer un nombre entre 1 et 7.</div>
             </div>
-            <div class="question" id="q15">
+            <div class="question">
                 <p>15. Combien de temps y consacrez-vous par jour ?</p>
-                <div class="input-group">
-                    <input type="number" name="q15_hours" min="0" max="24" placeholder="Heures">
-                    <input type="number" name="q15_minutes" min="0" max="59" placeholder="Minutes">
-                </div>
+                <input type="number" name="q15_hours" min="0" max="24" placeholder="Heures">
+                <input type="number" name="q15_minutes" min="0" max="59" placeholder="Minutes">
             </div>
             <h2>Comportement sédentaire</h2>
-            <div class="question" id="q16">
+            <div class="question">
                 <p>16. Combien de temps passez-vous assis ou couché par jour (hors sommeil) ?</p>
-                <div class="input-group">
-                    <input type="number" name="q16_hours" min="0" max="24" placeholder="Heures">
-                    <input type="number" name="q16_minutes" min="0" max="59" placeholder="Minutes">
-                </div>
+                <input type="number" name="q16_hours" min="0" max="24" placeholder="Heures">
+                <input type="number" name="q16_minutes" min="0" max="59" placeholder="Minutes">
             </div>
             <h2>Informations personnelles</h2>
-            <div class="input-group">
-                <label for="nom">Nom :</label>
-                <input type="text" id="nom" name="nom" placeholder="Entrez votre nom">
-            </div>
-            <div class="input-group">
-                <label for="prenom">Prénom :</label>
-                <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom">
-            </div>
-            <div class="input-group">
-                <label for="date">Date :</label>
-                <input type="text" id="date" name="date" readonly>
-            </div>
+<div class="input-group">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom" placeholder="Entrez votre nom">
+</div>
+<div class="input-group">
+    <label for="prenom">Prénom :</label>
+    <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom">
+</div>
+<div class="input-group">
+    <label for="date">Date :</label>
+    <input type="text" id="date" name="date" readonly>
+</div>
 
             <button type="button" onclick="calculateScore()">Soumettre</button>
             <button type="button" onclick="imprimerQuestionnaire()" style="margin-top: 10px;">Imprimer</button>
@@ -288,124 +246,19 @@
         <div id="result"></div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('q1').style.display = 'block';
-            const inputs = document.querySelectorAll('input[type="radio"], input[type="number"]');
-            inputs.forEach((input, index) => {
-                input.addEventListener('keydown', function(event) {
-                    if (event.key === 'Enter' || event.key === 'Tab') {
-                        event.preventDefault();
-                        let nextInput = inputs[index + 1];
-                        while (nextInput && (nextInput.name === 'q4' || nextInput.name === 'q7' || nextInput.name === 'q10' || nextInput.name === 'q13')) {
-                            nextInput = inputs[index + 2];
-                        }
-                        if (nextInput) {
-                            nextInput.focus();
-                        }
-                    }
-                });
-
-                // Ajout d'un événement tactile pour les appareils mobiles
-                input.addEventListener('touchend', function(event) {
-                    handleInputChange(event.target);
-                });
-
-                // Ajout d'un événement de changement pour les PC
-                input.addEventListener('change', function(event) {
-                    handleInputChange(event.target);
-                });
-            });
-
-            const radioButtons = document.querySelectorAll('input[type="radio"]');
-            radioButtons.forEach(radio => {
-                radio.addEventListener('change', function() {
-                    handleRadioChange(this);
-                });
-            });
-
-            const numberInputs = document.querySelectorAll('input[type="number"]');
-            numberInputs.forEach(input => {
-                input.addEventListener('input', function() {
-                    validateNumberInput(this);
-                });
-            });
-
-            const timeInputs = document.querySelectorAll('input[name$="_hours"], input[name$="_minutes"]');
-            timeInputs.forEach(input => {
-                input.addEventListener('input', function() {
-                    checkTimeInputs(this);
-                });
-            });
-        });
-
-        function handleInputChange(input) {
-            if (input.type === 'radio') {
-                handleRadioChange(input);
-            } else if (input.type === 'number') {
-                validateNumberInput(input);
-            }
-        }
-
-        function handleRadioChange(radio) {
-            const questionNumber = parseInt(radio.name.slice(1));
-            const nextQuestion = questionNumber + 1;
-            const nextQuestionElement = document.getElementById(`q${nextQuestion}`);
-
-            if (radio.value === '1') {
-                document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                if (nextQuestionElement && ![3, 6, 9, 12, 15].includes(nextQuestion)) {
-                    // No automatic scrolling
-                }
-            } else {
-                const skipToQuestion = questionNumber + 3;
-                document.getElementById(`q${skipToQuestion}`).style.display = 'block';
-                // No automatic scrolling
-            }
-        }
-
-        function validateNumberInput(input) {
-            const value = parseInt(input.value);
-            const errorMessage = input.parentElement.querySelector('.error-message');
-            if (isNaN(value) || value < 1 || value > 7) {
-                errorMessage.style.display = 'block';
-            } else {
-                errorMessage.style.display = 'none';
-                const questionNumber = parseInt(input.name.slice(1));
-                const nextQuestion = questionNumber + 1;
-                document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                if (![3, 6, 9, 12, 15].includes(nextQuestion)) {
-                    // No automatic scrolling
-                }
-            }
-        }
-
-        function checkTimeInputs(input) {
-            const questionNumber = parseInt(input.name.match(/\d+/)[0]);
-            const hoursInput = document.querySelector(`input[name="q${questionNumber}_hours"]`);
-            const minutesInput = document.querySelector(`input[name="q${questionNumber}_minutes"]`);
-
-            if (hoursInput.value !== '' || minutesInput.value !== '') {
-                const nextQuestion = questionNumber + 1;
-                document.getElementById(`q${nextQuestion}`).style.display = 'block';
-                if (![4, 7, 10, 13, 16].includes(nextQuestion)) {
-                    // No automatic scrolling
-                }
-            }
-        }
-
         function calculateScore() {
             const form = document.forms['gpaqForm'];
             function getNumber(name) {
                 return form[name] && form[name].value ? parseInt(form[name].value) : 0;
             }
 
-            const APim = (getNumber('q2') * ((getNumber('q3_hours') * 60) + getNumber('q3_minutes'))) +
+            const APim = (getNumber('q2') * ((getNumber('q3_hours') * 60) + getNumber('q3_minutes'))) + 
                          (getNumber('q11') * ((getNumber('q12_hours') * 60) + getNumber('q12_minutes')));
             const APiS = APim * 8;
             const APij = getNumber('q2') + getNumber('q11');
 
-            const APmm = (getNumber('q5') * ((getNumber('q6_hours') * 60) + getNumber('q6_minutes'))) +
-                         (getNumber('q8') * ((getNumber('q9_hours') * 60) + getNumber('q9_minutes'))) +
+            const APmm = (getNumber('q5') * ((getNumber('q6_hours') * 60) + getNumber('q6_minutes'))) + 
+                         (getNumber('q8') * ((getNumber('q9_hours') * 60) + getNumber('q9_minutes'))) + 
                          (getNumber('q14') * ((getNumber('q15_hours') * 60) + getNumber('q15_minutes')));
             const APmS = APmm * 4;
             const APmj = getNumber('q5') + getNumber('q8') + getNumber('q14');
@@ -429,21 +282,38 @@
             document.getElementById('result').innerText = `Statut d'activité : ${activityStatus}
 Statut de sédentarité : ${sedentaryStatus}`;
         }
-
-        function setDateToday() {
-            let today = new Date();
-            let formattedDate = today.toISOString().split('T')[0];
-            document.getElementById("date").value = formattedDate;
-        }
-        window.onload = setDateToday;
-
-        function imprimerQuestionnaire() {
-            const questions = document.querySelectorAll('.question');
-            questions.forEach(question => {
-                question.style.display = 'block';
-            });
-            window.print();
-        }
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input[type="radio"], input[type="number"]');
+            inputs.forEach((input, index) => {
+                input.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter' || event.key === 'Tab') {
+                        event.preventDefault();
+                        let nextInput = inputs[index + 1];
+                        while (nextInput && (nextInput.name === 'q4' || nextInput.name === 'q7' || nextInput.name === 'q10' || nextInput.name === 'q13')) {
+                            nextInput = inputs[index + 2];
+                        }
+                        if (nextInput) {
+                            nextInput.focus();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+    function setDateToday() {
+        let today = new Date();
+        let formattedDate = today.toISOString().split('T')[0];
+        document.getElementById("date").value = formattedDate;
+    }
+    window.onload = setDateToday;
+</script>
+    <script>
+    function imprimerQuestionnaire() {
+        window.print();
+    }
+</script>
 </body>
 </html>
