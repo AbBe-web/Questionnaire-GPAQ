@@ -260,28 +260,53 @@
             }
 
             let missingQuestions = [];
+            let invalidQuestions = [];
 
             if (getNumber('q1') === 1 && (!validateQuestion('q2', 1, 7) || !validateTime('q3_hours', 'q3_minutes'))) {
-                missingQuestions.push(2, 3);
+                invalidQuestions.push(2, 3);
             }
             if (getNumber('q4') === 1 && (!validateQuestion('q5', 1, 7) || !validateTime('q6_hours', 'q6_minutes'))) {
-                missingQuestions.push(5, 6);
+                invalidQuestions.push(5, 6);
             }
             if (getNumber('q7') === 1 && (!validateQuestion('q8', 1, 7) || !validateTime('q9_hours', 'q9_minutes'))) {
-                missingQuestions.push(8, 9);
+                invalidQuestions.push(8, 9);
             }
             if (getNumber('q10') === 1 && (!validateQuestion('q11', 1, 7) || !validateTime('q12_hours', 'q12_minutes'))) {
-                missingQuestions.push(11, 12);
+                invalidQuestions.push(11, 12);
             }
             if (getNumber('q13') === 1 && (!validateQuestion('q14', 1, 7) || !validateTime('q15_hours', 'q15_minutes'))) {
-                missingQuestions.push(14, 15);
+                invalidQuestions.push(14, 15);
             }
             if (!validateTime('q16_hours', 'q16_minutes')) {
+                invalidQuestions.push(16);
+            }
+
+            if (invalidQuestions.length > 0) {
+                alert(`Merci de vérifier votre réponse à la question ${invalidQuestions.length === 1 ? ` ${invalidQuestions[0]}` : `s ${[...new Set(invalidQuestions)].join(', ')}`}`);
+                return;
+            }
+
+            if (getNumber('q1') === 1 && (getNumber('q2') === 0 || (getNumber('q3_hours') === 0 && getNumber('q3_minutes') === 0))) {
+                missingQuestions.push(2, 3);
+            }
+            if (getNumber('q4') === 1 && (getNumber('q5') === 0 || (getNumber('q6_hours') === 0 && getNumber('q6_minutes') === 0))) {
+                missingQuestions.push(5, 6);
+            }
+            if (getNumber('q7') === 1 && (getNumber('q8') === 0 || (getNumber('q9_hours') === 0 && getNumber('q9_minutes') === 0))) {
+                missingQuestions.push(8, 9);
+            }
+            if (getNumber('q10') === 1 && (getNumber('q11') === 0 || (getNumber('q12_hours') === 0 && getNumber('q12_minutes') === 0))) {
+                missingQuestions.push(11, 12);
+            }
+            if (getNumber('q13') === 1 && (getNumber('q14') === 0 || (getNumber('q15_hours') === 0 && getNumber('q15_minutes') === 0))) {
+                missingQuestions.push(14, 15);
+            }
+            if (getNumber('q16_hours') === 0 && getNumber('q16_minutes') === 0) {
                 missingQuestions.push(16);
             }
 
             if (missingQuestions.length > 0) {
-                alert(`Merci de répondre aux questions : ${[...new Set(missingQuestions)].join(', ')}`);
+                alert(`Merci de répondre aux questions ${missingQuestions.length === 1 ? ` ${missingQuestions[0]}` : `s ${[...new Set(missingQuestions)].join(', ')}`}`);
                 return;
             }
 
@@ -305,7 +330,7 @@
             if ((APij >= 3 && APtS >= 1500) || (APtj >= 7 && APtS >= 3000)) {
                 activityStatus = `Très actif (${APtS} MET-min/semaine)`;
             } else if ((APij >= 3 && APim >= 60) || (APmj >= 5 && APmm >= 150) || (APtj >= 5 && APtS >= 600)) {
-                activityStatus = `Actif (${APtS} MET-min/semaine)`;
+                activityStatus = `Moyennement actif (${APtS} MET-min/semaine)`;
             } else {
                 activityStatus = `Insuffisamment actif (${APtS} MET-min/semaine)`;
             }
@@ -319,7 +344,14 @@ Statut de sédentarité : ${sedentaryStatus}`;
         function scrollToQuestion(questionNumber) {
             const questionElement = document.querySelector(`.question:nth-of-type(${questionNumber})`);
             if (questionElement) {
-                questionElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                const offset = 20; // Ajustez cette valeur pour augmenter ou diminuer la marge
+                const topPos = questionElement.getBoundingClientRect().top + window.scrollY - offset;
+                const leftPos = questionElement.getBoundingClientRect().left + window.scrollX - offset;
+                window.scrollTo({
+                    top: topPos,
+                    left: leftPos,
+                    behavior: 'smooth'
+                });
             }
         }
 
