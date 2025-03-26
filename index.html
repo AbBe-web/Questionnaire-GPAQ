@@ -22,60 +22,57 @@
             max-width: 600px;
             width: 100%;
         }
-              @media (max-width: 600px) {
-    .input-group input {
-        font-size: 16px;
-        padding: 12px;
-    }
-
-    label {
-        font-size: 14px;
-    }
-
-    .question {
-        margin-bottom: 25px;
-    }
-}
+        @media (max-width: 600px) {
+            .input-group input {
+                font-size: 16px;
+                padding: 12px;
+            }
+            label {
+                font-size: 14px;
+            }
+            .question {
+                margin-bottom: 25px;
+            }
+        }
         h1, h2 {
             text-align: center;
             color: #333;
         }
         @media print {
-    body {
-        font-size: 12px;
-        margin: 0;
-        padding: 0;
-    }
-    .container {
-        max-width: 100%;
-        width: auto;
-        padding: 10px;
-    }
-    .question {
-        margin-bottom: 5px;
-        page-break-inside: avoid;
-    }
-    label, input {
-        font-size: 12px;
-    }
-    button {
-        display: none;
-    }
-    h1, h2 {
-        page-break-after: avoid;
-    }
-    .input-group {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        page-break-inside: avoid;
-    }
-    #result {
-        page-break-before: avoid;
-        page-break-after: auto;
-    }
-}
-
+            body {
+                font-size: 12px;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+                width: auto;
+                padding: 10px;
+            }
+            .question {
+                margin-bottom: 5px;
+                page-break-inside: avoid;
+            }
+            label, input {
+                font-size: 12px;
+            }
+            button {
+                display: none;
+            }
+            h1, h2 {
+                page-break-after: avoid;
+            }
+            .input-group {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                page-break-inside: avoid;
+            }
+            #result {
+                page-break-before: avoid;
+                page-break-after: auto;
+            }
+        }
         .intro-text {
             text-align: center;
             font-size: 14px;
@@ -116,32 +113,30 @@
             color: #007BFF;
             width: 100%;
         }
-    .input-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* Espace entre les champs */
-}
-
-.input-group label {
-    width: 80px; /* Largeur fixe pour aligner les labels */
-    font-weight: bold; /* Optionnel : mettre en gras */
-}
-
-.input-group input {
-    flex: 1; /* Permet aux champs de s'adapter à la largeur */
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-</style>
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .input-group label {
+            width: 80px;
+            font-weight: bold;
+        }
+        .input-group input {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Questionnaire GPAQ</h1>
         <p class="intro-text">
-    Ce questionnaire de l'OMS s'adresse aux personnes de plus de 15 ans. Je vais maintenant vous poser quelques questions sur le temps que vous consacrez à différents types d’activité physique lors d'une semaine typique.
-    Veuillez répondre à ces questions même si vous ne vous considérez pas comme quelqu’un d’actif.
-</p>
+            Ce questionnaire de l'OMS s'adresse aux personnes de plus de 15 ans. Je vais maintenant vous poser quelques questions sur le temps que vous consacrez à différents types d’activité physique lors d'une semaine typique.
+            Veuillez répondre à ces questions même si vous ne vous considérez pas comme quelqu’un d’actif.
+        </p>
         <form id="gpaqForm">
             <h2>Activité au travail</h2>
             <div class="question">
@@ -227,38 +222,76 @@
                 <input type="number" name="q16_minutes" min="0" max="59" placeholder="Minutes">
             </div>
             <h2>Informations personnelles</h2>
-<div class="input-group">
-    <label for="nom">Nom :</label>
-    <input type="text" id="nom" name="nom" placeholder="Entrez votre nom">
-</div>
-<div class="input-group">
-    <label for="prenom">Prénom :</label>
-    <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom">
-</div>
-<div class="input-group">
-    <label for="date">Date :</label>
-    <input type="text" id="date" name="date" readonly>
-</div>
+            <div class="input-group">
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" placeholder="Entrez votre nom">
+            </div>
+            <div class="input-group">
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom">
+            </div>
+            <div class="input-group">
+                <label for="date">Date :</label>
+                <input type="text" id="date" name="date" readonly>
+            </div>
 
-            <button type="button" onclick="calculateScore()">Soumettre</button>
+            <button type="button" onclick="validateAndCalculate()">Soumettre</button>
             <button type="button" onclick="imprimerQuestionnaire()" style="margin-top: 10px;">Imprimer</button>
         </form>
         <div id="result"></div>
     </div>
     <script>
-        function calculateScore() {
+        function validateAndCalculate() {
             const form = document.forms['gpaqForm'];
+
             function getNumber(name) {
                 return form[name] && form[name].value ? parseInt(form[name].value) : 0;
             }
 
-            const APim = (getNumber('q2') * ((getNumber('q3_hours') * 60) + getNumber('q3_minutes'))) + 
+            function validateQuestion(q, min, max) {
+                const value = getNumber(q);
+                return value >= min && value <= max;
+            }
+
+            function validateTime(hours, minutes) {
+                const h = getNumber(hours);
+                const m = getNumber(minutes);
+                return (h >= 0 && h <= 24) && (m >= 0 && m <= 59);
+            }
+
+            let missingQuestions = [];
+
+            if (getNumber('q1') === 1 && (!validateQuestion('q2', 1, 7) || !validateTime('q3_hours', 'q3_minutes'))) {
+                missingQuestions.push(2, 3);
+            }
+            if (getNumber('q4') === 1 && (!validateQuestion('q5', 1, 7) || !validateTime('q6_hours', 'q6_minutes'))) {
+                missingQuestions.push(5, 6);
+            }
+            if (getNumber('q7') === 1 && (!validateQuestion('q8', 1, 7) || !validateTime('q9_hours', 'q9_minutes'))) {
+                missingQuestions.push(8, 9);
+            }
+            if (getNumber('q10') === 1 && (!validateQuestion('q11', 1, 7) || !validateTime('q12_hours', 'q12_minutes'))) {
+                missingQuestions.push(11, 12);
+            }
+            if (getNumber('q13') === 1 && (!validateQuestion('q14', 1, 7) || !validateTime('q15_hours', 'q15_minutes'))) {
+                missingQuestions.push(14, 15);
+            }
+            if (!validateTime('q16_hours', 'q16_minutes')) {
+                missingQuestions.push(16);
+            }
+
+            if (missingQuestions.length > 0) {
+                alert(`Merci de répondre aux questions : ${[...new Set(missingQuestions)].join(', ')}`);
+                return;
+            }
+
+            const APim = (getNumber('q2') * ((getNumber('q3_hours') * 60) + getNumber('q3_minutes'))) +
                          (getNumber('q11') * ((getNumber('q12_hours') * 60) + getNumber('q12_minutes')));
             const APiS = APim * 8;
             const APij = getNumber('q2') + getNumber('q11');
 
-            const APmm = (getNumber('q5') * ((getNumber('q6_hours') * 60) + getNumber('q6_minutes'))) + 
-                         (getNumber('q8') * ((getNumber('q9_hours') * 60) + getNumber('q9_minutes'))) + 
+            const APmm = (getNumber('q5') * ((getNumber('q6_hours') * 60) + getNumber('q6_minutes'))) +
+                         (getNumber('q8') * ((getNumber('q9_hours') * 60) + getNumber('q9_minutes'))) +
                          (getNumber('q14') * ((getNumber('q15_hours') * 60) + getNumber('q15_minutes')));
             const APmS = APmm * 4;
             const APmj = getNumber('q5') + getNumber('q8') + getNumber('q14');
@@ -272,7 +305,7 @@
             if ((APij >= 3 && APtS >= 1500) || (APtj >= 7 && APtS >= 3000)) {
                 activityStatus = `Très actif (${APtS} MET-min/semaine)`;
             } else if ((APij >= 3 && APim >= 60) || (APmj >= 5 && APmm >= 150) || (APtj >= 5 && APtS >= 600)) {
-                activityStatus = `Moyennement actif (${APtS} MET-min/semaine)`;
+                activityStatus = `Actif (${APtS} MET-min/semaine)`;
             } else {
                 activityStatus = `Insuffisamment actif (${APtS} MET-min/semaine)`;
             }
@@ -282,8 +315,14 @@
             document.getElementById('result').innerText = `Statut d'activité : ${activityStatus}
 Statut de sédentarité : ${sedentaryStatus}`;
         }
-    </script>
-    <script>
+
+        function scrollToQuestion(questionNumber) {
+            const questionElement = document.querySelector(`.question:nth-of-type(${questionNumber})`);
+            if (questionElement) {
+                questionElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const inputs = document.querySelectorAll('input[type="radio"], input[type="number"]');
             inputs.forEach((input, index) => {
@@ -299,21 +338,45 @@ Statut de sédentarité : ${sedentaryStatus}`;
                         }
                     }
                 });
+
+                input.addEventListener('change', function() {
+                    if (input.name === 'q1' && input.value === '1') {
+                        scrollToQuestion(2);
+                    } else if (input.name === 'q1' && input.value === '0') {
+                        scrollToQuestion(4);
+                    } else if (input.name === 'q4' && input.value === '1') {
+                        scrollToQuestion(5);
+                    } else if (input.name === 'q4' && input.value === '0') {
+                        scrollToQuestion(7);
+                    } else if (input.name === 'q7' && input.value === '1') {
+                        scrollToQuestion(8);
+                    } else if (input.name === 'q7' && input.value === '0') {
+                        scrollToQuestion(10);
+                    } else if (input.name === 'q10' && input.value === '1') {
+                        scrollToQuestion(11);
+                    } else if (input.name === 'q10' && input.value === '0') {
+                        scrollToQuestion(13);
+                    } else if (input.name === 'q13' && input.value === '1') {
+                        scrollToQuestion(14);
+                    } else if (input.name === 'q13' && input.value === '0') {
+                        scrollToQuestion(16);
+                    }
+                });
             });
         });
     </script>
     <script>
-    function setDateToday() {
-        let today = new Date();
-        let formattedDate = today.toISOString().split('T')[0];
-        document.getElementById("date").value = formattedDate;
-    }
-    window.onload = setDateToday;
-</script>
+        function setDateToday() {
+            let today = new Date();
+            let formattedDate = today.toISOString().split('T')[0];
+            document.getElementById("date").value = formattedDate;
+        }
+        window.onload = setDateToday;
+    </script>
     <script>
-    function imprimerQuestionnaire() {
-        window.print();
-    }
-</script>
+        function imprimerQuestionnaire() {
+            window.print();
+        }
+    </script>
 </body>
 </html>
