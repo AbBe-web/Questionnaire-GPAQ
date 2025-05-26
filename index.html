@@ -7,12 +7,21 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        a {
+            color: #007BFF;
+        }
+        p {
+            margin-bottom: 1em;
         }
         .container {
             background: white;
@@ -33,10 +42,6 @@
             .question {
                 margin-bottom: 25px;
             }
-        }
-        h1, h2 {
-            text-align: center;
-            color: #333;
         }
         @media print {
             body {
@@ -132,13 +137,13 @@
 </head>
 <body>
     <div class="container">
-            <!-- Bandeau RGPD -->
-    <div class="rgpd-banner">
-      Ce questionnaire, hébergé sur le site Github, ne stocke pas vos données. Vous pouvez l'imprimer pour votre usage personnel ou médical.
-      En continuant, vous acceptez que les données saisies puissent être affichées sur votre écran ou imprimées.
-      <a href="https://abbe-web.github.io/Questionnaire-GPAQ/politique-confidentialite.html" target="_blank" rel="noopener noreferrer">Consulter la politique de confidentialité</a> |
-      <a href="https://www.cnil.fr/fr/les-droits-pour-maitriser-vos-donnees-personnelles" target="_blank" rel="noopener noreferrer">Vos droits (CNIL)</a>
-    </div>
+        <!-- Bandeau RGPD -->
+        <div class="rgpd-banner">
+            Ce questionnaire, hébergé sur le site Github, ne stocke pas vos données. Vous pouvez l'imprimer pour votre usage personnel ou médical.
+            En continuant, vous acceptez que les données saisies puissent être affichées sur votre écran ou imprimées.
+            <a href="https://abbe-web.github.io/Questionnaire-GPAQ/politique-confidentialite.html" target="_blank" rel="noopener noreferrer">Consulter la politique de confidentialité</a> |
+            <a href="https://www.cnil.fr/fr/les-droits-pour-maitriser-vos-donnees-personnelles" target="_blank" rel="noopener noreferrer">Vos droits (CNIL)</a>
+        </div>
         <h1>Questionnaire GPAQ</h1>
         <p class="intro-text">
             Ce questionnaire de l'OMS s'adresse aux personnes de plus de 15 ans. Je vais maintenant vous poser quelques questions sur le temps que vous consacrez à différents types d’activité physique lors d'une semaine typique.
